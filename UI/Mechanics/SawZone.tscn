@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://1vdsqtvlx5et"]
+[gd_scene format=3 uid="uid://cffsfqo0o3nyx"]
 
-[ext_resource type="Script" uid="uid://tbstuqpqikh7" path="res://TreeUI.gd" id="1_5u831"]
-[ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://tree.png" id="2_y2yrj"]
+[ext_resource type="Script" uid="uid://tbstuqpqikh7" path="res://UI/Mechanics/TreeUI.gd" id="1_nnc3y"]
+[ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://tree.png" id="2_xkcco"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=2016291272]
 offset_right = 300.0
@@ -16,8 +16,8 @@ layout_mode = 2
 [node name="TreeDisplay" type="PanelContainer" parent="VBoxContainer" unique_id=2125933783 node_paths=PackedStringArray("progress_bar")]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
-script = ExtResource("1_5u831")
-tree = ExtResource("2_y2yrj")
+script = ExtResource("1_nnc3y")
+tree = ExtResource("2_xkcco")
 progress_bar = NodePath("../ProgressBar")
 
 [node name="TreeDelay" type="Timer" parent="VBoxContainer/TreeDisplay" unique_id=126554402]

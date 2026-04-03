@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://1vdsqtvlx5et"]
+
+[ext_resource type="Script" uid="uid://tbstuqpqikh7" path="res://UI/Mechanics/TreeUI.gd" id="1_5u831"]
+[ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://tree.png" id="2_y2yrj"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=2016291272]
+offset_right = 300.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=105693652]
+layout_mode = 2
+
+[node name="TreeDisplay" type="PanelContainer" parent="VBoxContainer" unique_id=2125933783 node_paths=PackedStringArray("progress_bar")]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("1_5u831")
+tree = ExtResource("2_y2yrj")
+progress_bar = NodePath("../ProgressBar")
+
+[node name="TreeDelay" type="Timer" parent="VBoxContainer/TreeDisplay" unique_id=126554402]
+autostart = true
+
+[node name="ChopDelay" type="Timer" parent="VBoxContainer/TreeDisplay" unique_id=1811777738]
+one_shot = true
+
+[node name="ChopButton" type="Button" parent="VBoxContainer" unique_id=1336881296]
+layout_mode = 2
+text = "CHOP"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=1117841903]
+layout_mode = 2
+
+[connection signal="timeout" from="VBoxContainer/TreeDisplay/TreeDelay" to="VBoxContainer/TreeDisplay" method="_on_tree_delay_timeout"]
+[connection signal="timeout" from="VBoxContainer/TreeDisplay/ChopDelay" to="VBoxContainer/TreeDisplay" method="_on_chop_delay_timeout"]
+[connection signal="pressed" from="VBoxContainer/ChopButton" to="VBoxContainer/TreeDisplay" method="_on_chop_button_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3ye8xibd6wxe"]
 
-[ext_resource type="Script" uid="uid://u3ftq7w44yph" path="res://UI/resource_panel.gd" id="1_04q2c"]
+[ext_resource type="Script" uid="uid://u3ftq7w44yph" path="res://UI/DisplayPanels/resource_panel.gd" id="1_04q2c"]
 
 [node name="ResourcePanel" type="PanelContainer" unique_id=834301793]
 script = ExtResource("1_04q2c")

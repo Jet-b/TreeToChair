@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://buxybgy3sjnmv"]
 
-[ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/Upgrades.tscn" id="1_2fwl4"]
+[ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/DisplayPanels/Upgrades.tscn" id="1_2fwl4"]
 [ext_resource type="Script" uid="uid://btrjd1fbee52q" path="res://UI/ui.gd" id="1_e6gg6"]
-[ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/TreeZone.tscn" id="2_dajm1"]
-[ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/ResourcePanel.tscn" id="4_hat8c"]
+[ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/TreeZone.tscn" id="2_dajm1"]
+[ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="4_hat8c"]
 
 [sub_resource type="Gradient" id="Gradient_e6gg6"]
 offsets = PackedFloat32Array(0, 0.99759614)
