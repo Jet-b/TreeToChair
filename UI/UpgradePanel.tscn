@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://8s5odki6e5t8"]
+
+[node name="UpgradePanel" type="PanelContainer" unique_id=1757804984]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1134060369]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=250891135]
+layout_mode = 2
+text = "Chopped Huzz"
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=147164365]
+layout_mode = 2
+text = "BUY"

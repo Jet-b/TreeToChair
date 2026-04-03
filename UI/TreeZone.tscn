@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://1vdsqtvlx5et"]
+
+[ext_resource type="Script" uid="uid://tbstuqpqikh7" path="res://TreeUI.gd" id="1_5u831"]
+[ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://tree.png" id="2_y2yrj"]
+
+[node name="PanelContainer" type="PanelContainer" unique_id=2125933783]
+offset_right = 125.0
+offset_bottom = 105.0
+script = ExtResource("1_5u831")
+tree = ExtResource("2_y2yrj")
+
+[node name="TreeDelay" type="Timer" parent="." unique_id=126554402]
+autostart = true
+
+[connection signal="timeout" from="TreeDelay" to="." method="_on_tree_delay_timeout"]

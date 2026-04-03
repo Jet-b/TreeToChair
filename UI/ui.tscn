@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://buxybgy3sjnmv"]
+
+[ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/Upgrades.tscn" id="1_2fwl4"]
+[ext_resource type="Script" uid="uid://btrjd1fbee52q" path="res://UI/ui.gd" id="1_e6gg6"]
+[ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/TreeZone.tscn" id="2_dajm1"]
+
+[node name="UI" type="Window" unique_id=573929793]
+oversampling_override = 1.0
+mode = 4
+title = "Farm to Table"
+position = Vector2i(0, 22)
+size = Vector2i(1916, 1050)
+unresizable = true
+script = ExtResource("1_e6gg6")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1631089989]
+z_index = 1
+offset_left = 384.0
+offset_top = 320.0
+offset_right = 1384.0
+offset_bottom = 561.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 1
+
+[node name="Upgrades" parent="TabContainer" unique_id=640017076 instance=ExtResource("1_2fwl4")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="PanelContainer" parent="TabContainer" unique_id=2125933783 instance=ExtResource("2_dajm1")]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2035304618]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.5372549, 1)
