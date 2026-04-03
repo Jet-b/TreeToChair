@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://db2of7ywbnhis"]
 
 [ext_resource type="PackedScene" uid="uid://8s5odki6e5t8" path="res://UI/UpgradePanel.tscn" id="1_dvfat"]
+[ext_resource type="Script" uid="uid://bkqc3nqepfb3c" path="res://UI/upgrades.gd" id="1_prjll"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nn6j"]
 content_margin_left = 10.0
@@ -274,6 +275,8 @@ Window/icons/close_pressed = null
 Window/styles/embedded_border = null
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1257425739]
+script = ExtResource("1_prjll")
+upgrade_panel = ExtResource("1_dvfat")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=640017076]
 custom_minimum_size = Vector2(200, 200)
@@ -292,24 +295,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_mdkeq")
-
-[node name="UpgradePanel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1757804984 instance=ExtResource("1_dvfat")]
-layout_mode = 2
-
-[node name="UpgradePanel2" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=960221006 instance=ExtResource("1_dvfat")]
-layout_mode = 2
-
-[node name="UpgradePanel3" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1259398 instance=ExtResource("1_dvfat")]
-layout_mode = 2
-
-[node name="UpgradePanel4" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1264617684 instance=ExtResource("1_dvfat")]
-layout_mode = 2
-
-[node name="UpgradePanel5" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=2000395287 instance=ExtResource("1_dvfat")]
-layout_mode = 2
-
-[node name="UpgradePanel6" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=2115352135 instance=ExtResource("1_dvfat")]
-layout_mode = 2
-
-[node name="UpgradePanel7" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1818515311 instance=ExtResource("1_dvfat")]
-layout_mode = 2
