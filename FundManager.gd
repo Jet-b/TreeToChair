@@ -18,6 +18,7 @@ enum ResType {
 	CHAIRS,
 }
 
+# temp upgrades, change as required
 enum Upgrade {
 	SHARP_AXE,        # +2 wood per tree
 	FINE_SAW,         # 1 wood per plank instead of 2
