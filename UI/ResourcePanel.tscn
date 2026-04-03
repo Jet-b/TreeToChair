@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b3ye8xibd6wxe"]
+
+[ext_resource type="Script" uid="uid://u3ftq7w44yph" path="res://UI/resource_panel.gd" id="1_04q2c"]
+
+[node name="ResourcePanel" type="PanelContainer" unique_id=834301793]
+script = ExtResource("1_04q2c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1510919128]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="VBoxContainer" unique_id=1384007054]
+layout_mode = 2
+text = "Money: 0"
+
+[node name="WoodLabel" type="Label" parent="VBoxContainer" unique_id=266979859]
+layout_mode = 2
+text = "Wood: 0"
+
+[node name="PlanksLabel" type="Label" parent="VBoxContainer" unique_id=376577431]
+layout_mode = 2
+text = "Planks: 0"
+
+[node name="MetalLabel" type="Label" parent="VBoxContainer" unique_id=599088639]
+layout_mode = 2
+text = "Metal: 0"
+
+[node name="NailsLabel" type="Label" parent="VBoxContainer" unique_id=2073947931]
+layout_mode = 2
+text = "Nails: 0"
+
+[node name="ChairsLabel" type="Label" parent="VBoxContainer" unique_id=770705893]
+layout_mode = 2
+text = "Chairs: 0"
