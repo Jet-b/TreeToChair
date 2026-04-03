@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://btrjd1fbee52q" path="res://UI/ui.gd" id="1_e6gg6"]
 [ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/TreeZone.tscn" id="2_dajm1"]
 [ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="4_hat8c"]
+[ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/SawZone.tscn" id="5_3sbvi"]
 
 [sub_resource type="Gradient" id="Gradient_e6gg6"]
 offsets = PackedFloat32Array(0, 0.99759614)
@@ -44,6 +45,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ResourcePanel" parent="TabContainer/HBoxContainer" unique_id=834301793 instance=ExtResource("4_hat8c")]
+layout_mode = 2
+
+[node name="MarginContainer" parent="TabContainer/HBoxContainer" unique_id=2016291272 instance=ExtResource("5_3sbvi")]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1252573028]

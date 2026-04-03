@@ -13,7 +13,6 @@ config_version=5
 config/name="TreeToChair"
 run/main_scene="uid://buxybgy3sjnmv"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
