@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dwf8rq0drpvqu" path="res://UI/Mechanics/Sawmill/saw_display.gd" id="1_srd1y"]
 [ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/log.png" id="2_3wemg"]
 [ext_resource type="PackedScene" uid="uid://bcgfapk3ttm3s" path="res://UI/Mechanics/Sawmill/Log.tscn" id="3_6xj0q"]
+[ext_resource type="Texture2D" uid="uid://rgsi0ee27rv8" path="res://Art/Wood Shredder.png" id="4_wg6hk"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=2016291272]
 offset_right = 300.0
@@ -34,6 +35,11 @@ size_flags_vertical = 8
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Sawmill" unique_id=677091180]
+position = Vector2(150.00002, 25)
+scale = Vector2(0.42253524, 0.41666666)
+texture = ExtResource("4_wg6hk")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/Sawmill" unique_id=1205941535]
 z_index = 1
