@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://ch6kb7g866tm1"]
+
+[ext_resource type="Script" uid="uid://bigcq1vas7njx" path="res://UI/Mechanics/Smithing/smithing_zone.gd" id="1_0f2xm"]
+[ext_resource type="Texture2D" uid="uid://be3xk261p45j3" path="res://Art/ingot-Sheet.png" id="1_tpebo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f2xm"]
+atlas = ExtResource("1_tpebo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hij3k"]
+atlas = ExtResource("1_tpebo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kftxs"]
+atlas = ExtResource("1_tpebo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tgxy"]
+atlas = ExtResource("1_tpebo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ww4hf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f2xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hij3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kftxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tgxy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SmithingZone" type="PanelContainer" unique_id=455808818]
+script = ExtResource("1_0f2xm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2078748846]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer" unique_id=1958373785]
+position = Vector2(131, 144)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ww4hf")
+
+[node name="VSlider" type="VSlider" parent="HBoxContainer" unique_id=1097528551]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_horizontal = 10
