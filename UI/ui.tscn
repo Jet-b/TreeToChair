@@ -70,6 +70,7 @@ layout_mode = 2
 [node name="StockMarket" parent="TabContainer" unique_id=262314408 instance=ExtResource("3_c7tqi")]
 visible = false
 layout_mode = 2
+debug = true
 metadata/_tab_index = 1
 metadata/_tab_name = "Stock Market"
 
