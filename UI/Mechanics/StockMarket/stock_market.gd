@@ -18,20 +18,20 @@ const RESOURCE_NAMES = {
 
 const BASE_PRICES = {
 	FundManager.ResType.WOOD: 5,
-	FundManager.ResType.PLANKS: 12,
-	FundManager.ResType.METAL: 20,
-	FundManager.ResType.NAILS: 8,
-	FundManager.ResType.CHAIRS: 50,
+	FundManager.ResType.PLANKS: 8,
+	FundManager.ResType.METAL: 3,
+	FundManager.ResType.NAILS: 6,
+	FundManager.ResType.CHAIRS: 100,
 }
 
-@export var BUY_MARKUP := 1.2
-@export var MAX_HISTORY := 150
+@export var BUY_MARKUP = 1.2
+@export var MAX_HISTORY = 150
 @export var debug: bool = false
 @export var TICK_INTERVAL: float = 1
-@export var PRESSURE_PER_BUY := 0.07
-@export var PRESSURE_PER_SELL := 0.05
-@export var PRESSURE_DECAY := 0.92
-@export var MAX_PRESSURE := 2.0
+@export var PRESSURE_PER_BUY = 0.07
+@export var PRESSURE_PER_SELL = 0.05q
+@export var PRESSURE_DECAY = 0.92
+@export var MAX_PRESSURE = 2.0
 
 var price_graph: Control
 var own_label: Label
@@ -153,11 +153,11 @@ func on_tab_pressed(res: FundManager.ResType) -> void:
 	update_ui()
 
 func _recalculate_price(res: FundManager.ResType) -> void:
-	var base := float(BASE_PRICES[res])
+	var base = float(BASE_PRICES[res])
 	var t: float = time_offsets[res]
-	var wave1 := sin(t * 0.3) * base * 0.3
-	var wave2 := sin(t * 0.7 + 2.0) * base * 0.15
-	var wave3 := sin(t * 1.5 + 5.0) * base * 0.08
+	var wave1 = sin(t * 0.3) * base * 0.3
+	var wave2 = sin(t * 0.7 + 2.0) * base * 0.15
+	var wave3 = sin(t * 1.5 + 5.0) * base * 0.08
 	current_prices[res] = max(1.0, base + wave1 + wave2 + wave3 + base * demand_pressure[res])
 
 func on_buy_pressed() -> void:
