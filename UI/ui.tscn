@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/DisplayPanels/Upgrades.tscn" id="1_2fwl4"]
 [ext_resource type="Script" uid="uid://btrjd1fbee52q" path="res://UI/ui.gd" id="1_e6gg6"]
-[ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/TreeZone.tscn" id="2_dajm1"]
+[ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="2_dajm1"]
 [ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="4_hat8c"]
+[ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="5_3sbvi"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/SawZone.tscn" id="5_3sbvi"]
 
 [sub_resource type="Gradient" id="Gradient_e6gg6"]

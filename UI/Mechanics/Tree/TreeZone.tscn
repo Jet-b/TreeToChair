@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1vdsqtvlx5et"]
 
-[ext_resource type="Script" uid="uid://tbstuqpqikh7" path="res://UI/Mechanics/TreeUI.gd" id="1_5u831"]
+[ext_resource type="Script" uid="uid://tbstuqpqikh7" path="res://UI/Mechanics/Tree/TreeUI.gd" id="1_5u831"]
 [ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://Art/tree.png" id="2_y2yrj"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=2016291272]
