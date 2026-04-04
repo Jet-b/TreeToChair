@@ -73,11 +73,11 @@ func display_wood(pos: Vector2 = Vector2.ZERO):
 	new_wood.global_position = pos if pos != Vector2.ZERO else random_wood_pos()
 	new_wood.z_index = 1
 
-func handle_saw_particles():
-	if $SawParticles.get_child_count() < 5:
-		var duplicate = saw_particles.duplicate()
-		$SawParticles.add_child(duplicate)
-		duplicate.emitting = true
+func handle_saw_particles() -> CPUParticles2D:
+	var duplicate = saw_particles.duplicate()
+	$SawParticles.add_child(duplicate)
+	duplicate.emitting = true
+	return duplicate
 
 func log_sawed() -> void:
 	holding_wood = false
@@ -98,17 +98,19 @@ func log_dropped(log):
 	
 func run_sawmill():
 	FundManager.take(FundManager.ResType.WOOD, 1)
-	
+
+	var particle = handle_saw_particles()
+
 	var timer := Timer.new()
 	$SawmillTimers.add_child(timer)
 	timer.wait_time = saw_delay
 	timer.one_shot = true
 	timer.start()
-	timer.timeout.connect(_on_saw_delay_timeout)
-	
-	handle_saw_particles()
+	timer.timeout.connect(_on_saw_delay_timeout.bind(particle))
 	
 
-func _on_saw_delay_timeout() -> void:
-	$SawParticles.get_child(0).queue_free()
+func _on_saw_delay_timeout(particle: CPUParticles2D) -> void:
+	particle.emitting = false
 	FundManager.give(FundManager.ResType.PLANKS, 1)
+	await get_tree().create_timer(particle.lifetime).timeout
+	particle.queue_free()
