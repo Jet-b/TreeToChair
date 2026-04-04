@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwf8rq0drpvqu" path="res://UI/Mechanics/saw_display.gd" id="1_srd1y"]
 [ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/log.png" id="2_3wemg"]
+[ext_resource type="PackedScene" uid="uid://bcgfapk3ttm3s" path="res://UI/Mechanics/Log.tscn" id="3_6xj0q"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=2016291272]
 offset_right = 300.0
@@ -18,6 +19,7 @@ custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
 script = ExtResource("1_srd1y")
 wood = ExtResource("2_3wemg")
+log = ExtResource("3_6xj0q")
 
 [node name="SawDelay" type="Timer" parent="VBoxContainer/WoodDisplay" unique_id=1811777738]
 one_shot = true
