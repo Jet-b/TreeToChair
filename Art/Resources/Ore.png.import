@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rgsi0ee27rv8"
-path="res://.godot/imported/Wood Shredder.png-f01437e92aa8e0b6521c3c27ff0f9daf.ctex"
+uid="uid://dddluqsrv3atc"
+path="res://.godot/imported/Ore.png-89973a8a92166bce1a4137bf59b62952.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Wood Shredder.png"
-dest_files=["res://.godot/imported/Wood Shredder.png-f01437e92aa8e0b6521c3c27ff0f9daf.ctex"]
+source_file="res://Art/Resources/Ore.png"
+dest_files=["res://.godot/imported/Ore.png-89973a8a92166bce1a4137bf59b62952.ctex"]
 
 [params]
 
