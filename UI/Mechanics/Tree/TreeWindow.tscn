@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cirlgb0lvxudd"]
-
-[ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="1_wimgj"]
-
-[node name="TreeWindow" type="Window" unique_id=415510681]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
-
-[node name="TreeZone" parent="." unique_id=89365384 instance=ExtResource("1_wimgj")]
