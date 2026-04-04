@@ -23,8 +23,12 @@ log = ExtResource("3_6xj0q")
 saw_particles = NodePath("../Sawmill/CPUParticles2D")
 sawmill = NodePath("../Sawmill")
 
-[node name="SawDelay" type="Timer" parent="VBoxContainer/WoodDisplay" unique_id=1811777738]
-one_shot = true
+[node name="SawmillTimers" type="Control" parent="VBoxContainer/WoodDisplay" unique_id=527341336]
+layout_mode = 2
+
+[node name="SawParticles" type="Control" parent="VBoxContainer/WoodDisplay" unique_id=242201096]
+layout_mode = 2
+size_flags_vertical = 8
 
 [node name="Sawmill" type="ColorRect" parent="VBoxContainer" unique_id=562938340]
 custom_minimum_size = Vector2(0, 50)
@@ -32,9 +36,10 @@ layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/Sawmill" unique_id=1205941535]
-position = Vector2(152, 23)
+z_index = 1
+position = Vector2(152, 44)
 emitting = false
-amount = 16
+amount = 24
 lifetime = 0.8
 randomness = 1.0
 emission_shape = 3
@@ -49,5 +54,3 @@ angle_max = 720.0
 scale_amount_min = 3.0
 scale_amount_max = 3.0
 color = Color(0.6784314, 0.4392157, 0.09803922, 1)
-
-[connection signal="timeout" from="VBoxContainer/WoodDisplay/SawDelay" to="VBoxContainer/WoodDisplay" method="_on_saw_delay_timeout"]
