@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="3_c7tqi"]
 [ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="4_hat8c"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="5_3sbvi"]
-[ext_resource type="PackedScene" uid="uid://moneyctr" path="res://UI/DisplayPanels/MoneyCounter.tscn" id="6_mc"]
+[ext_resource type="PackedScene" path="res://UI/DisplayPanels/MoneyCounter.tscn" id="6_mc"]
+[ext_resource type="PackedScene" uid="uid://f25rdk63o4bp" path="res://UI/Mechanics/Mining/MiningZone.tscn" id="8_4fiuh"]
 
 [sub_resource type="Gradient" id="Gradient_e6gg6"]
 offsets = PackedFloat32Array(0, 0.99759614)
@@ -65,6 +66,9 @@ layout_mode = 2
 
 [node name="MarginContainer" parent="TabContainer/MainTab" unique_id=582036771 instance=ExtResource("3_c7tqi")]
 visible = false
+layout_mode = 2
+
+[node name="PanelContainer" parent="TabContainer/MainTab" unique_id=530760337 instance=ExtResource("8_4fiuh")]
 layout_mode = 2
 
 [node name="StockMarket" parent="TabContainer" unique_id=262314408 instance=ExtResource("3_c7tqi")]

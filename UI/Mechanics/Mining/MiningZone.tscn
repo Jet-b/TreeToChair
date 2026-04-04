@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://f25rdk63o4bp"]
+
+[ext_resource type="Texture2D" uid="uid://dddluqsrv3atc" path="res://Art/Ore.png" id="1_0u4fh"]
+[ext_resource type="Script" uid="uid://dw86pgx38lqc2" path="res://UI/Mechanics/Mining/mining_zone.gd" id="1_kcq4r"]
+
+[node name="PanelContainer" type="PanelContainer" unique_id=530760337]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 237.0
+script = ExtResource("1_kcq4r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2107835878]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=2059624394]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Control" unique_id=1666079137]
+position = Vector2(140, 63)
+scale = Vector2(2, 2)
+texture = ExtResource("1_0u4fh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=270570393]
+layout_mode = 2
+
+[node name="SwingLeft" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1425898854]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Swing"
+
+[node name="SwingRight" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1730946370]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Swing"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=355378827]
+layout_mode = 2
+max_value = 3.0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SwingLeft" to="." method="_on_swing_left_pressed"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/SwingRight" to="." method="_on_swing_right_button_down"]
