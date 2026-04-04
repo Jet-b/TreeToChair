@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcgfapk3ttm3s"]
 
 [ext_resource type="Script" uid="uid://be1820yakbmcs" path="res://UI/Mechanics/Sawmill/log.gd" id="1_5f33o"]
-[ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/log.png" id="1_vmjy8"]
+[ext_resource type="Texture2D" path="res://Art/log.png" id="1_vmjy8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5f33o"]
 

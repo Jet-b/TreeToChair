@@ -1,0 +1,437 @@
+[gd_scene format=3 uid="uid://dq3ohxr5mg2f5"]
+
+[ext_resource type="Script" uid="uid://b043pt2lhaxq" path="res://UI/Mechanics/Assembling/assembling_zone.gd" id="1_u72k3"]
+[ext_resource type="Texture2D" uid="uid://bw8e08cs2p47i" path="res://Art/Chair/0014.png" id="2_xagu4"]
+[ext_resource type="Texture2D" uid="uid://pdl7t6ciivre" path="res://Art/Chair/0019.png" id="3_8s6a0"]
+[ext_resource type="Texture2D" uid="uid://vffyuxnj54ve" path="res://Art/Chair/0024.png" id="4_mnfni"]
+[ext_resource type="Texture2D" uid="uid://bv1qreas66chc" path="res://Art/Chair/0029.png" id="5_vvc37"]
+[ext_resource type="Texture2D" uid="uid://fkbp7w8op2qc" path="res://Art/Chair/0034.png" id="6_a0rpo"]
+[ext_resource type="Texture2D" uid="uid://d3dkps6sidrwb" path="res://Art/Chair/0039.png" id="7_cw8b6"]
+[ext_resource type="Texture2D" uid="uid://g3ttktwrscvv" path="res://Art/Chair/0044.png" id="8_mt323"]
+[ext_resource type="Texture2D" uid="uid://dcuxpi8mx5v1k" path="res://Art/Chair/0048.png" id="9_82au8"]
+[ext_resource type="Texture2D" uid="uid://b0ns6hpmfgt6c" path="res://Art/Chair/0053.png" id="10_jikhv"]
+[ext_resource type="Texture2D" uid="uid://cp51ftrdlt5pn" path="res://Art/Chair/0058.png" id="11_jrers"]
+[ext_resource type="Texture2D" uid="uid://b5bhd7t75xx5q" path="res://Art/Chair/0063.png" id="12_0wrce"]
+[ext_resource type="Texture2D" uid="uid://barl6xbq82ppm" path="res://Art/Chair/0068.png" id="13_g556u"]
+[ext_resource type="Texture2D" uid="uid://b8or7n4vxuxh4" path="res://Art/Chair/0074.png" id="14_shg68"]
+[ext_resource type="Texture2D" uid="uid://dwg8wck8nvl3a" path="res://Art/Chair/0078.png" id="15_5f4y2"]
+[ext_resource type="Texture2D" uid="uid://d3iqktov6ua2a" path="res://Art/Chair/0083.png" id="16_p5a6g"]
+[ext_resource type="Texture2D" uid="uid://r82k7yqqtrs2" path="res://Art/Chair/0088.png" id="17_wra3s"]
+[ext_resource type="Texture2D" uid="uid://b6setjgwqwgcr" path="res://Art/Chair/0093.png" id="18_ycofv"]
+[ext_resource type="Texture2D" uid="uid://b70n3cy57nirt" path="res://Art/Chair/0098.png" id="19_hi3kb"]
+[ext_resource type="Texture2D" uid="uid://h30sm65a4b0c" path="res://Art/Chair/0103.png" id="20_adt2d"]
+[ext_resource type="Texture2D" uid="uid://dkljhqs3s6jvo" path="res://Art/Chair/0104.png" id="21_ii22m"]
+[ext_resource type="Texture2D" uid="uid://bl66lidcwgbnb" path="res://Art/Chair/0108.png" id="22_n6mhb"]
+[ext_resource type="Texture2D" uid="uid://bg3lvnhv00g4k" path="res://Art/Chair/0113.png" id="23_bh5my"]
+[ext_resource type="Texture2D" uid="uid://d3xujvmua3qp7" path="res://Art/Chair/0118.png" id="24_jxb6o"]
+[ext_resource type="Texture2D" uid="uid://hptchevtft1k" path="res://Art/Chair/0003.png" id="25_h8ikh"]
+[ext_resource type="Texture2D" uid="uid://d4gyiagxdyxov" path="res://Art/Chair/0008.png" id="26_kknt5"]
+[ext_resource type="Script" uid="uid://srbj0epx4ji8" path="res://UI/Mechanics/Assembling/sides.gd" id="27_xagu4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sydy8"]
+atlas = ExtResource("2_xagu4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxrem"]
+atlas = ExtResource("3_8s6a0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxox6"]
+atlas = ExtResource("4_mnfni")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2kbi"]
+atlas = ExtResource("5_vvc37")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gvn7"]
+atlas = ExtResource("6_a0rpo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yuiu"]
+atlas = ExtResource("7_cw8b6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffbc3"]
+atlas = ExtResource("8_mt323")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfpow"]
+atlas = ExtResource("9_82au8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6balx"]
+atlas = ExtResource("10_jikhv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfkqi"]
+atlas = ExtResource("11_jrers")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s866"]
+atlas = ExtResource("12_0wrce")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cnxr"]
+atlas = ExtResource("13_g556u")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwimb"]
+atlas = ExtResource("14_shg68")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oymh"]
+atlas = ExtResource("15_5f4y2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou72y"]
+atlas = ExtResource("16_p5a6g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14y5l"]
+atlas = ExtResource("17_wra3s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0jpf"]
+atlas = ExtResource("18_ycofv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_821ah"]
+atlas = ExtResource("19_hi3kb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdo4n"]
+atlas = ExtResource("20_adt2d")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg4c4"]
+atlas = ExtResource("21_ii22m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwyu8"]
+atlas = ExtResource("22_n6mhb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mr1v"]
+atlas = ExtResource("23_bh5my")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doc84"]
+atlas = ExtResource("24_jxb6o")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwvib"]
+atlas = ExtResource("25_h8ikh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6com6"]
+atlas = ExtResource("26_kknt5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55bs3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sydy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxrem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxox6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2kbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gvn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yuiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffbc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfpow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6balx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfkqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s866")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cnxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwimb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oymh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou72y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14y5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0jpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_821ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdo4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg4c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwyu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mr1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doc84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwvib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6com6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Control" type="Control" unique_id=45031767 node_paths=PackedStringArray("chairSprite")]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_u72k3")
+chairSprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=736056274]
+z_index = 1
+position = Vector2(916, 489)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_55bs3")
+autoplay = "default"
+frame = 19
+
+[node name="Side1" type="Control" parent="." unique_id=715656727]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("27_xagu4")
+
+[node name="Button" type="Button" parent="Side1" unique_id=1636556206]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 816.0
+offset_top = 551.0
+offset_right = 836.0
+offset_bottom = 571.0
+
+[node name="Button2" type="Button" parent="Side1" unique_id=1777509862]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 982.0
+offset_top = 551.0
+offset_right = 1002.0
+offset_bottom = 571.0
+
+[node name="Button3" type="Button" parent="Side1" unique_id=1642563943]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 831.0
+offset_top = 487.0
+offset_right = 851.0
+offset_bottom = 507.0
+
+[node name="Button4" type="Button" parent="Side1" unique_id=11346038]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 967.0
+offset_top = 489.0
+offset_right = 987.0
+offset_bottom = 509.0
+
+[node name="Side2" type="Control" parent="." unique_id=382275128]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("27_xagu4")
+
+[node name="Button" type="Button" parent="Side2" unique_id=1776158378]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 816.0
+offset_top = 313.0
+offset_right = 836.0
+offset_bottom = 333.0
+
+[node name="Button2" type="Button" parent="Side2" unique_id=85437653]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 988.0
+offset_top = 312.0
+offset_right = 1008.0
+offset_bottom = 332.0
+
+[node name="Button3" type="Button" parent="Side2" unique_id=68932991]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 831.0
+offset_top = 464.0
+offset_right = 851.0
+offset_bottom = 484.0
+
+[node name="Button4" type="Button" parent="Side2" unique_id=500588369]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 971.0
+offset_top = 470.0
+offset_right = 991.0
+offset_bottom = 490.0
+
+[node name="Side3" type="Control" parent="." unique_id=941206125]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("27_xagu4")
+
+[node name="Button" type="Button" parent="Side3" unique_id=917586014]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 816.0
+offset_top = 568.0
+offset_right = 836.0
+offset_bottom = 588.0
+
+[node name="Button2" type="Button" parent="Side3" unique_id=2004323498]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 984.0
+offset_top = 569.0
+offset_right = 1004.0
+offset_bottom = 589.0
+
+[node name="Button3" type="Button" parent="Side3" unique_id=1083791829]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 817.0
+offset_top = 458.0
+offset_right = 837.0
+offset_bottom = 478.0
+
+[node name="Button4" type="Button" parent="Side3" unique_id=1906460784]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 459.0
+offset_right = 1015.0
+offset_bottom = 479.0
+
+[node name="Side4" type="Control" parent="." unique_id=297148081]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("27_xagu4")
+
+[node name="Button" type="Button" parent="Side4" unique_id=1348341703]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 839.0
+offset_top = 681.0
+offset_right = 859.0
+offset_bottom = 701.0
+
+[node name="Button2" type="Button" parent="Side4" unique_id=118692163]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 968.0
+offset_top = 672.0
+offset_right = 988.0
+offset_bottom = 692.0
+
+[node name="Button3" type="Button" parent="Side4" unique_id=823413555]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 839.0
+offset_top = 336.0
+offset_right = 859.0
+offset_bottom = 356.0
+
+[node name="Button4" type="Button" parent="Side4" unique_id=1449533487]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 959.0
+offset_top = 341.0
+offset_right = 979.0
+offset_bottom = 361.0
+
+[connection signal="buttons_pressed" from="Side1" to="." method="_on_side_1_buttons_pressed"]
+[connection signal="pressed" from="Side1/Button" to="Side1" method="_on_button_pressed"]
+[connection signal="pressed" from="Side1/Button2" to="Side1" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Side1/Button3" to="Side1" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Side1/Button4" to="Side1" method="_on_button_4_pressed"]
+[connection signal="buttons_pressed" from="Side2" to="." method="_on_side_2_buttons_pressed"]
+[connection signal="pressed" from="Side2/Button" to="Side2" method="_on_button_pressed"]
+[connection signal="pressed" from="Side2/Button2" to="Side2" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Side2/Button3" to="Side2" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Side2/Button4" to="Side2" method="_on_button_4_pressed"]
+[connection signal="buttons_pressed" from="Side3" to="." method="_on_side_3_buttons_pressed"]
+[connection signal="pressed" from="Side3/Button" to="Side3" method="_on_button_pressed"]
+[connection signal="pressed" from="Side3/Button2" to="Side3" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Side3/Button3" to="Side3" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Side3/Button4" to="Side3" method="_on_button_4_pressed"]
+[connection signal="buttons_pressed" from="Side4" to="." method="_on_side_4_buttons_pressed"]
+[connection signal="pressed" from="Side4/Button" to="Side4" method="_on_button_pressed"]
+[connection signal="pressed" from="Side4/Button2" to="Side4" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Side4/Button3" to="Side4" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Side4/Button4" to="Side4" method="_on_button_4_pressed"]
