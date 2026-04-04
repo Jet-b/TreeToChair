@@ -2,7 +2,8 @@ extends PanelContainer
 
 @export var wood : Texture2D
 @export var log : PackedScene
-
+@export var saw_particles : CPUParticles2D
+@export var sawmill : ColorRect
 @export var saw_delay := 0.5
 
 var current_wood := 0
@@ -14,9 +15,15 @@ var clickable_sprites = []
 
 func _ready():
 	$SawDelay.wait_time = saw_delay
-	FundManager.resource_changed.connect(wood_update)
-	display_wood(FundManager.get_amount(FundManager.ResType.WOOD))
 	
+	FundManager.resource_changed.connect(wood_update)
+	display_all_wood(FundManager.get_amount(FundManager.ResType.WOOD))
+	
+func _process(delta: float) -> void:
+	if $SawDelay.time_left != 0:
+		saw_particles.emitting = true
+	else:
+		saw_particles.emitting = false
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -39,6 +46,8 @@ func _input(event):
 			nearest_sprite.queue_free()
 			var new_log = log.instantiate()
 			add_child(new_log)
+			holding_wood = true
+			new_log.connect("dropped", log_dropped)
 
 func random_wood_pos():
 	var wood_pos : Vector2
@@ -47,24 +56,38 @@ func random_wood_pos():
 	return wood_pos
 
 func wood_update(resType, count):
-	display_wood(count)
+	if resType == FundManager.ResType.WOOD:
+		display_all_wood(count)
 
-func display_wood(count: int):
+func display_all_wood(count: int):
+	print("COUNT" + str(count))
+	print("AMOUNT" + str(FundManager.get_amount(FundManager.ResType.WOOD)))
 	if holding_wood:
 		count -= 1
 	for i in count - clickable_sprites.size():
-		var new_wood = Sprite2D.new()
-		new_wood.texture = wood
-		add_child(new_wood)
-		clickable_sprites.append(new_wood)
-		new_wood.global_position = random_wood_pos()
-		new_wood.z_index = 1
+		display_wood()
 
+func display_wood():
+	var new_wood = Sprite2D.new()
+	new_wood.texture = wood
+	add_child(new_wood)
+	clickable_sprites.append(new_wood)
+	new_wood.global_position = random_wood_pos()
+	new_wood.z_index = 1
+
+func log_dropped(log):
+	holding_wood = false
+	
+	if log.global_position.x > sawmill.global_position.x and \
+		log.global_position.x < sawmill.global_position.x + sawmill.size.x:
+		if log.global_position.y > sawmill.global_position.y and \
+			log.global_position.y < sawmill.global_position.y + sawmill.size.y:
+				$SawDelay.start()
+		else:
+			display_wood()
+	log.queue_free()
+	
+	
 func _on_saw_delay_timeout() -> void:
-	for child in get_children():
-			if child is Sprite2D:
-				child.queue_free()
-				FundManager.give(FundManager.ResType.PLANKS, 1)
-				FundManager.take(FundManager.ResType.WOOD, 2)
-				return
-				
+	FundManager.give(FundManager.ResType.PLANKS, 1)
+	FundManager.take(FundManager.ResType.WOOD, 1)

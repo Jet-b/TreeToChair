@@ -14,14 +14,40 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=105693652]
 layout_mode = 2
 
-[node name="WoodDisplay" type="PanelContainer" parent="VBoxContainer" unique_id=2125933783]
+[node name="WoodDisplay" type="PanelContainer" parent="VBoxContainer" unique_id=2125933783 node_paths=PackedStringArray("saw_particles", "sawmill")]
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
 script = ExtResource("1_srd1y")
 wood = ExtResource("2_3wemg")
 log = ExtResource("3_6xj0q")
+saw_particles = NodePath("../Sawmill/CPUParticles2D")
+sawmill = NodePath("../Sawmill")
 
 [node name="SawDelay" type="Timer" parent="VBoxContainer/WoodDisplay" unique_id=1811777738]
 one_shot = true
 
-[connection signal="timeout" from="VBoxContainer/WoodDisplay/SawDelay" to="VBoxContainer/WoodDisplay" method="_on_chop_delay_timeout"]
+[node name="Sawmill" type="ColorRect" parent="VBoxContainer" unique_id=562938340]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/Sawmill" unique_id=1205941535]
+position = Vector2(152, 23)
+emitting = false
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(100, 10)
+spread = 180.0
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+angle_min = 720.0
+angle_max = 720.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(0.6784314, 0.4392157, 0.09803922, 1)
+
+[connection signal="timeout" from="VBoxContainer/WoodDisplay/SawDelay" to="VBoxContainer/WoodDisplay" method="_on_saw_delay_timeout"]
