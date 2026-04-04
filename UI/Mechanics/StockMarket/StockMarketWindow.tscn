@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bypbm0h070mmp"]
+
+[ext_resource type="Script" uid="uid://dnr5m7tvfdmdl" path="res://UI/Mechanics/StockMarket/stock_market.gd" id="1_sm"]
+[ext_resource type="Script" uid="uid://wdhxdh2stmd5" path="res://UI/Mechanics/StockMarket/price_graph.gd" id="2_pg"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=582036771]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_sm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=11079502]
+layout_mode = 2
+
+[node name="StockTabs" type="HBoxContainer" parent="VBoxContainer" unique_id=580873849]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GraphPanel" type="PanelContainer" parent="VBoxContainer" unique_id=906887465]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxGraph" type="VBoxContainer" parent="VBoxContainer/GraphPanel" unique_id=834929682]
+layout_mode = 2
+
+[node name="PriceGraph" type="Control" parent="VBoxContainer/GraphPanel/VBoxGraph" unique_id=735166993]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_pg")
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/GraphPanel/VBoxGraph" unique_id=1524324337]
+layout_mode = 2
+text = "Time"
+horizontal_alignment = 1
+
+[node name="InfoRow" type="HBoxContainer" parent="VBoxContainer" unique_id=593751990]
+layout_mode = 2
+
+[node name="BuyLabel" type="Label" parent="VBoxContainer/InfoRow" unique_id=1397143427]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Price: $0"
+
+[node name="OwnLabel" type="Label" parent="VBoxContainer/InfoRow" unique_id=1527021652]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "You Own: 0"
+horizontal_alignment = 1
+
+[node name="SellLabel" type="Label" parent="VBoxContainer/InfoRow" unique_id=1093141477]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sell Price: $0"
+horizontal_alignment = 2
+
+[node name="ButtonRow" type="HBoxContainer" parent="VBoxContainer" unique_id=252153060]
+layout_mode = 2
+alignment = 1
+
+[node name="BuyButton" type="Button" parent="VBoxContainer/ButtonRow" unique_id=780503052]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy"
+
+[node name="SellButton" type="Button" parent="VBoxContainer/ButtonRow" unique_id=421642980]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sell"

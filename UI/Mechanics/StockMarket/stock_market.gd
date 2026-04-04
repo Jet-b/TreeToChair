@@ -1,0 +1,160 @@
+extends MarginContainer
+
+const SELLABLE_RESOURCES = [
+	FundManager.ResType.WOOD,
+	FundManager.ResType.PLANKS,
+	FundManager.ResType.METAL,
+	FundManager.ResType.NAILS,
+	FundManager.ResType.CHAIRS,
+]
+
+const RESOURCE_NAMES = {
+	FundManager.ResType.WOOD: "Wood",
+	FundManager.ResType.PLANKS: "Planks",
+	FundManager.ResType.METAL: "Metal",
+	FundManager.ResType.NAILS: "Nails",
+	FundManager.ResType.CHAIRS: "Chairs",
+}
+
+const BASE_PRICES = {
+	FundManager.ResType.WOOD: 5,
+	FundManager.ResType.PLANKS: 12,
+	FundManager.ResType.METAL: 20,
+	FundManager.ResType.NAILS: 8,
+	FundManager.ResType.CHAIRS: 50,
+}
+
+@export var BUY_MARKUP := 1.2
+@export var MAX_HISTORY := 150
+@export var debug: bool = false
+@export var TICK_INTERVAL: float = 1
+
+var price_graph: Control
+var own_label: Label
+var buy_price_label: Label
+var sell_price_label: Label
+var buy_button: Button
+var sell_button: Button
+var stock_tabs: HBoxContainer
+
+var selected_resource: FundManager.ResType = FundManager.ResType.WOOD
+var price_history: Dictionary = {}
+var current_prices: Dictionary = {}
+var time_offsets: Dictionary = {}
+var tick: float = 0.0
+var tab_buttons: Dictionary = {}
+
+func _ready() -> void:
+	price_graph = %PriceGraph
+	own_label = %OwnLabel
+	buy_price_label = %BuyLabel
+	sell_price_label = %SellLabel
+	buy_button = %BuyButton
+	sell_button = %SellButton
+	stock_tabs = %StockTabs
+
+	for res in SELLABLE_RESOURCES:
+		price_history[res] = [] as Array[float]
+		current_prices[res] = float(BASE_PRICES[res])
+		time_offsets[res] = randf() * 100.0
+
+		var btn = Button.new()
+		btn.text = RESOURCE_NAMES[res]
+		btn.toggle_mode = true
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		btn.pressed.connect(on_tab_pressed.bind(res))
+		stock_tabs.add_child(btn)
+		tab_buttons[res] = btn
+
+	tab_buttons[selected_resource].button_pressed = true
+
+	buy_button.pressed.connect(on_buy_pressed)
+	sell_button.pressed.connect(on_sell_pressed)
+	FundManager.resource_changed.connect(on_resource_changed)
+	update_ui()
+
+func _process(delta: float) -> void:
+	for res in price_history:
+		while price_history[res].size() > MAX_HISTORY:
+			price_history[res].pop_front()
+	tick += delta
+	if tick >= TICK_INTERVAL:
+		tick -= TICK_INTERVAL
+		update_prices()
+
+func update_prices() -> void:
+	for res in SELLABLE_RESOURCES:
+		var base = float(BASE_PRICES[res])
+		time_offsets[res] += 0.15
+		var t: float = time_offsets[res]
+
+		var wave1 = sin(t * 0.3) * base * 0.3
+		var wave2 = sin(t * 0.7 + 2.0) * base * 0.15
+		var wave3 = sin(t * 1.5 + 5.0) * base * 0.08
+		var noise = (randf() - 0.5) * base * 0.1
+
+		var price = base + wave1 + wave2 + wave3 + noise
+		price = max(1.0, price)
+		current_prices[res] = price
+
+		if debug and res == selected_resource:
+			print("[%s] base=%.1f w1=%.2f w2=%.2f w3=%.2f noise=%.2f => $%.1f" % [
+				RESOURCE_NAMES[res], base, wave1, wave2, wave3, noise, price
+			])
+
+		price_history[res].append(price)
+		if price_history[res].size() > MAX_HISTORY:
+			price_history[res].pop_front()
+
+	update_ui()
+
+func update_ui() -> void:
+	var sell_price: float = current_prices[selected_resource]
+	var buy_price: int = int(ceil(sell_price * BUY_MARKUP))
+	buy_price_label.text = "Buy Price: $%d" % [buy_price]
+	sell_price_label.text = "Sell Price: $%d" % [int(sell_price)]
+	own_label.text = "You Own: %d" % FundManager.get_amount(selected_resource)
+
+	if debug:
+		price_graph.set_wave(build_wave_curve(selected_resource))
+	else:
+		price_graph.set_wave([])
+
+	price_graph.set_history(price_history[selected_resource])
+
+func build_wave_curve(res: FundManager.ResType) -> Array:
+	var base = float(BASE_PRICES[res])
+	var t_now: float = time_offsets[res]
+	var history_count: int = price_history[res].size()
+	if history_count < 2:
+		return []
+	var t_start: float = t_now - (history_count - 1) * 0.15
+	var samples = 200
+	var curve: Array = []
+	for i in range(samples + 1):
+		var frac = float(i) / float(samples)
+		var t: float = t_start + frac * (t_now - t_start)
+		var val = base + sin(t * 0.3) * base * 0.3 + sin(t * 0.7 + 2.0) * base * 0.15 + sin(t * 1.5 + 5.0) * base * 0.08
+		curve.append(max(1.0, val))
+	return curve
+
+func on_tab_pressed(res: FundManager.ResType) -> void:
+	selected_resource = res
+	for r in tab_buttons:
+		tab_buttons[r].button_pressed = (r == res)
+	update_ui()
+
+func on_buy_pressed() -> void:
+	var buy_price: int = int(ceil(current_prices[selected_resource] * BUY_MARKUP))
+	if FundManager.take(FundManager.ResType.MONEY, buy_price):
+		FundManager.give(selected_resource, 1)
+	update_ui()
+
+func on_sell_pressed() -> void:
+	if FundManager.take(selected_resource, 1):
+		FundManager.give(FundManager.ResType.MONEY, int(current_prices[selected_resource]))
+	update_ui()
+
+func on_resource_changed(type, amount) -> void:
+	if type == selected_resource or type == FundManager.ResType.MONEY:
+		update_ui()

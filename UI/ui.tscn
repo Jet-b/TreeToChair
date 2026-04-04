@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://btrjd1fbee52q" path="res://UI/ui.gd" id="1_e6gg6"]
 [ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="2_dajm1"]
 [ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://Art/tree.png" id="2_nm1m0"]
+[ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="3_c7tqi"]
 [ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="4_hat8c"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="5_3sbvi"]
 
@@ -56,6 +57,11 @@ layout_mode = 2
 
 [node name="SawZone" parent="TabContainer/HBoxContainer" unique_id=2016291272 instance=ExtResource("5_3sbvi")]
 layout_mode = 2
+
+[node name="MarginContainer" parent="TabContainer" unique_id=582036771 instance=ExtResource("3_c7tqi")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1252573028]
 anchors_preset = 15
