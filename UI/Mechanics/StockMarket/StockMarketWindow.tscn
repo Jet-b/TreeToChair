@@ -46,6 +46,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Price: $0"
+horizontal_alignment = 2
 
 [node name="OwnLabel" type="Label" parent="VBoxContainer/InfoRow" unique_id=1527021652]
 unique_name_in_owner = true
@@ -59,7 +60,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Sell Price: $0"
-horizontal_alignment = 2
 
 [node name="ButtonRow" type="HBoxContainer" parent="VBoxContainer" unique_id=252153060]
 layout_mode = 2

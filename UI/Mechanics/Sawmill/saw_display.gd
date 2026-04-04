@@ -39,9 +39,12 @@ func _input(event):
 			clickable_sprites.erase(nearest_sprite)
 			nearest_sprite.queue_free()
 			var new_log = log.instantiate()
+			new_log.sawmill = sawmill
+			new_log.log_zone = self
 			add_child(new_log)
 			holding_wood = true
 			new_log.connect("dropped", log_dropped)
+			new_log.connect("sawed", log_sawed)
 
 func random_wood_pos():
 	var wood_pos : Vector2
@@ -56,15 +59,18 @@ func wood_update(resType, count):
 func display_all_wood(count: int):
 	if holding_wood:
 		count -= 1
+	while clickable_sprites.size() > count:
+		var sprite = clickable_sprites.pop_back()
+		sprite.queue_free()
 	for i in count - clickable_sprites.size():
 		display_wood()
 
-func display_wood():
+func display_wood(pos: Vector2 = Vector2.ZERO):
 	var new_wood = Sprite2D.new()
 	new_wood.texture = wood
 	add_child(new_wood)
 	clickable_sprites.append(new_wood)
-	new_wood.global_position = random_wood_pos()
+	new_wood.global_position = pos if pos != Vector2.ZERO else random_wood_pos()
 	new_wood.z_index = 1
 
 func handle_saw_particles():
@@ -73,16 +79,21 @@ func handle_saw_particles():
 		$SawParticles.add_child(duplicate)
 		duplicate.emitting = true
 
+func log_sawed() -> void:
+	holding_wood = false
+	run_sawmill()
+
 func log_dropped(log):
 	holding_wood = false
-	
+
 	if log.global_position.x > sawmill.global_position.x and \
 		log.global_position.x < sawmill.global_position.x + sawmill.size.x:
 		if log.global_position.y > sawmill.global_position.y and \
 			log.global_position.y < sawmill.global_position.y + sawmill.size.y:
 				run_sawmill()
-		else:
-			display_wood()
+				log.queue_free()
+				return
+	display_wood(log.global_position)
 	log.queue_free()
 	
 func run_sawmill():
