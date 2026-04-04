@@ -29,7 +29,7 @@ const BASE_PRICES = {
 @export var debug: bool = false
 @export var TICK_INTERVAL: float = 1
 @export var PRESSURE_PER_BUY = 0.07
-@export var PRESSURE_PER_SELL = 0.05q
+@export var PRESSURE_PER_SELL = 0.05
 @export var PRESSURE_DECAY = 0.92
 @export var MAX_PRESSURE = 2.0
 
