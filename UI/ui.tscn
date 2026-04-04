@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="3_c7tqi"]
 [ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="4_hat8c"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="5_3sbvi"]
+[ext_resource type="PackedScene" path="res://UI/DisplayPanels/MoneyCounter.tscn" id="6_mc"]
 
 [sub_resource type="Gradient" id="Gradient_e6gg6"]
 offsets = PackedFloat32Array(0, 0.99759614)
@@ -34,10 +35,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
+theme_override_constants/tab_separation = 8
 current_tab = 0
+clip_tabs = false
 drag_to_rearrange_enabled = true
 tab_0/title = "Main Tab"
 tab_0/icon = ExtResource("2_nm1m0")
+tab_1/title = "Stock Market"
+tab_2/title = "$0"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer" unique_id=463197997]
 layout_mode = 2
@@ -58,10 +63,20 @@ layout_mode = 2
 [node name="SawZone" parent="TabContainer/HBoxContainer" unique_id=2016291272 instance=ExtResource("5_3sbvi")]
 layout_mode = 2
 
-[node name="MarginContainer" parent="TabContainer" unique_id=582036771 instance=ExtResource("3_c7tqi")]
+[node name="MarginContainer" parent="TabContainer/HBoxContainer" unique_id=582036771 instance=ExtResource("3_c7tqi")]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" parent="TabContainer" unique_id=262314408 instance=ExtResource("3_c7tqi")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+metadata/_tab_name = "Stock Market"
+
+[node name="MoneyCounter" parent="TabContainer" instance=ExtResource("6_mc")]
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = "$0"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1252573028]
 anchors_preset = 15
