@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/DisplayPanels/Upgrades.tscn" id="1_2fwl4"]
 [ext_resource type="Script" uid="uid://btrjd1fbee52q" path="res://UI/ui.gd" id="1_e6gg6"]
 [ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="2_dajm1"]
+[ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://Art/tree.png" id="2_nm1m0"]
 [ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="4_hat8c"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="5_3sbvi"]
 
@@ -33,23 +34,27 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
 current_tab = 0
+drag_to_rearrange_enabled = true
+tab_0/title = "Main Tab"
+tab_0/icon = ExtResource("2_nm1m0")
 
-[node name="Main Tab" type="HBoxContainer" parent="TabContainer" unique_id=463197997]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer" unique_id=463197997]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_tab_index = 0
+metadata/_tab_name = "Main Tab"
 
-[node name="Upgrades" parent="TabContainer/Main Tab" unique_id=640017076 instance=ExtResource("1_2fwl4")]
+[node name="Upgrades" parent="TabContainer/HBoxContainer" unique_id=640017076 instance=ExtResource("1_2fwl4")]
 layout_mode = 2
 
-[node name="TreeZone" parent="TabContainer/Main Tab" unique_id=2125933783 instance=ExtResource("2_dajm1")]
+[node name="TreeZone" parent="TabContainer/HBoxContainer" unique_id=2125933783 instance=ExtResource("2_dajm1")]
 layout_mode = 2
 
-[node name="ResourcePanel" parent="TabContainer/Main Tab" unique_id=834301793 instance=ExtResource("4_hat8c")]
+[node name="ResourcePanel" parent="TabContainer/HBoxContainer" unique_id=834301793 instance=ExtResource("4_hat8c")]
 layout_mode = 2
 
-[node name="SawZone" parent="TabContainer/Main Tab" unique_id=2016291272 instance=ExtResource("5_3sbvi")]
+[node name="SawZone" parent="TabContainer/HBoxContainer" unique_id=2016291272 instance=ExtResource("5_3sbvi")]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1252573028]
