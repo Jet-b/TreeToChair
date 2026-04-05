@@ -1,6 +1,5 @@
 extends PanelContainer
 
-@onready var money_label = $HBoxContainer/MoneyLabel
 @onready var wood_label = $HBoxContainer/WoodLabel
 @onready var planks_label = $HBoxContainer/PlanksLabel
 @onready var metal_label = $HBoxContainer/MetalLabel
@@ -12,8 +11,6 @@ func _ready() -> void:
 	
 
 func update_labels(type):
-	if type == FundManager.ResType.MONEY:
-		money_label.text = "Money: " + str(FundManager.get_amount(FundManager.ResType.MONEY))
 	if type == FundManager.ResType.WOOD:
 		wood_label.text = "Wood: " + str(FundManager.get_amount(FundManager.ResType.WOOD))
 	if type == FundManager.ResType.PLANKS:

@@ -12,11 +12,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MoneyLabel" type="Label" parent="HBoxContainer" unique_id=1384007054]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Money: 0"
-
 [node name="WoodLabel" type="Label" parent="HBoxContainer" unique_id=266979859]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
