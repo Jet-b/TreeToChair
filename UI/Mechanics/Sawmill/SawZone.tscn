@@ -20,7 +20,6 @@ theme_override_constants/separation = 8
 
 [node name="WoodDisplay" type="PanelContainer" parent="VBoxContainer" unique_id=2125933783 node_paths=PackedStringArray("saw_particles", "sawmill")]
 custom_minimum_size = Vector2(300, 200)
-clip_contents = true
 layout_mode = 2
 script = ExtResource("1_srd1y")
 wood = ExtResource("2_3wemg")
@@ -31,17 +30,13 @@ sawmill = NodePath("../Sawmill")
 [node name="SawmillTimers" type="Control" parent="VBoxContainer/WoodDisplay" unique_id=527341336]
 layout_mode = 2
 
-[node name="SawParticles" type="Control" parent="VBoxContainer/WoodDisplay" unique_id=242201096]
-layout_mode = 2
-size_flags_vertical = 8
-
 [node name="Sawmill" type="ColorRect" parent="VBoxContainer" unique_id=562938340]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Sawmill" unique_id=677091180]
-position = Vector2(174.00005, 29.000002)
+position = Vector2(173, 20.000002)
 scale = Vector2(0.49014094, 0.48333335)
 texture = ExtResource("4_wg6hk")
 
@@ -65,7 +60,7 @@ scale_amount_min = 3.0
 scale_amount_max = 3.0
 color = Color(0.6784314, 0.4392157, 0.09803922, 1)
 
-[node name="AutoSep" type="HSeparator" parent="VBoxContainer" unique_id=3400000001]
+[node name="AutoSep" type="HSeparator" parent="VBoxContainer" unique_id=-894967295]
 layout_mode = 2
 
 [node name="AutoSeller" parent="VBoxContainer" unique_id=430478601 instance=ExtResource("5_asel")]

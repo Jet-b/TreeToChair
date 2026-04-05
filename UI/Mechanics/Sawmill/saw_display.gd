@@ -110,13 +110,13 @@ func display_wood(pos: Vector2 = Vector2.ZERO):
 	add_child(new_wood)
 	clickable_sprites.append(new_wood)
 	new_wood.global_position = pos if pos != Vector2.ZERO else random_wood_pos()
-	new_wood.z_index = 1
+	new_wood.z_index = 2
 	var direction := 1.0 if randf() > 0.5 else -1.0
 	_spin_rates[new_wood] = direction * randf_range(0.8, 2.5)
 
 func handle_saw_particles() -> CPUParticles2D:
 	var duplicate = saw_particles.duplicate()
-	$SawParticles.add_child(duplicate)
+	sawmill.add_child(duplicate)
 	duplicate.emitting = true
 	return duplicate
 
