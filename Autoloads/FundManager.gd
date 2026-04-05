@@ -40,7 +40,7 @@ var UPGRADES: Dictionary = {}
 
 # --- State ---
 
-var debug: bool = true  # Set true to make all upgrades free
+var debug: bool = false  # Set true to make all upgrades free
 
 var _resources: Dictionary = {}
 var _upgrades: Dictionary = {}
