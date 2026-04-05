@@ -1,21 +1,41 @@
 [gd_scene format=3 uid="uid://8s5odki6e5t8"]
 
+[ext_resource type="Script" uid="uid://bvu41me5xxnkj" path="res://UI/DisplayPanels/Upgrades/upgrade_panel.gd" id="1_upgp"]
+
 [node name="UpgradePanel" type="PanelContainer" unique_id=1757804984]
 custom_minimum_size = Vector2(200, 0)
+script = ExtResource("1_upgp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1869299514]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1234567890]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1869299514]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=250891135]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=250891135]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Chopped Huzz"
 
-[node name="PriceLabel" type="Label" parent="VBoxContainer" unique_id=543501419]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=759187835]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Chopped Huzz"
+
+[node name="CountLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=109371257]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Chopped Huzz"
+
+[node name="PriceLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=543501419]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Price: 0"
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=147164365]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=147164365]
 layout_mode = 2
 text = "BUY"

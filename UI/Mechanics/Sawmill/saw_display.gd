@@ -11,13 +11,36 @@ var currently_sawing := 0
 
 var holding_wood := false
 
-var clickable_sprites = [] 
+var clickable_sprites = []
+var _spin_rates: Dictionary = {}  # sprite -> radians/sec
+var _fall_speed := 0.0
+const FALL_SPEED_BASE := 8.0
 
 
 func _ready():
 	FundManager.resource_changed.connect(wood_update)
+	FundManager.upgrade_unlocked.connect(_on_upgrade_unlocked)
 	display_all_wood(FundManager.get_amount(FundManager.ResType.WOOD))
-			
+	_fall_speed = FALL_SPEED_BASE * FundManager.get_upgrade_count("LOG_GRAVITY")
+
+func _process(delta: float) -> void:
+	if _fall_speed <= 0.0:
+		return
+	var sm_top := sawmill.global_position.y
+	var sm_bottom := sm_top + sawmill.size.y
+	var sm_left := sawmill.global_position.x
+	var sm_right := sm_left + sawmill.size.x
+	for sprite in clickable_sprites.duplicate():
+		sprite.global_position.y += _fall_speed * delta
+		sprite.rotation += _spin_rates.get(sprite, 1.0) * (_fall_speed / FALL_SPEED_BASE) * delta
+		if sprite.global_position.y >= sm_top and \
+				sprite.global_position.y <= sm_bottom and \
+				sprite.global_position.x >= sm_left and \
+				sprite.global_position.x <= sm_right:
+			clickable_sprites.erase(sprite)
+			_spin_rates.erase(sprite)
+			sprite.queue_free()
+			run_sawmill()
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -72,6 +95,8 @@ func display_wood(pos: Vector2 = Vector2.ZERO):
 	clickable_sprites.append(new_wood)
 	new_wood.global_position = pos if pos != Vector2.ZERO else random_wood_pos()
 	new_wood.z_index = 1
+	var direction := 1.0 if randf() > 0.5 else -1.0
+	_spin_rates[new_wood] = direction * randf_range(0.8, 2.5)
 
 func handle_saw_particles() -> CPUParticles2D:
 	var duplicate = saw_particles.duplicate()
@@ -98,15 +123,17 @@ func log_dropped(log):
 	
 func run_sawmill():
 	FundManager.take(FundManager.ResType.WOOD, 1)
-
 	var particle = handle_saw_particles()
-
 	var timer := Timer.new()
 	$SawmillTimers.add_child(timer)
 	timer.wait_time = saw_delay
 	timer.one_shot = true
 	timer.start()
 	timer.timeout.connect(_on_saw_delay_timeout.bind(particle))
+
+func _on_upgrade_unlocked(name: String) -> void:
+	if name == "LOG_GRAVITY":
+		_fall_speed += FALL_SPEED_BASE
 	
 
 func _on_saw_delay_timeout(particle: CPUParticles2D) -> void:

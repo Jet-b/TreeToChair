@@ -28,9 +28,9 @@ const BASE_PRICES = {
 @export var MAX_HISTORY = 150
 @export var debug: bool = false
 @export var TICK_INTERVAL: float = 1
-@export var PRESSURE_PER_BUY = 0.07
-@export var PRESSURE_PER_SELL = 0.05
-@export var PRESSURE_DECAY = 0.92
+@export var PRESSURE_PER_BUY = 0.002
+@export var PRESSURE_PER_SELL = 0.002
+@export var PRESSURE_DECAY = 0.98
 @export var MAX_PRESSURE = 2.0
 
 var price_graph: Control
@@ -48,6 +48,14 @@ var time_offsets: Dictionary = {}
 var demand_pressure: Dictionary = {}
 var tick: float = 0.0
 var tab_buttons: Dictionary = {}
+
+var _holding_buy := false
+var _holding_sell := false
+var _hold_time := 0.0
+var _hold_interval := 0.0
+const HOLD_START_INTERVAL := 0.4
+const HOLD_MIN_INTERVAL := 0.02
+const HOLD_RAMP_SPEED := 0.85
 
 func _ready() -> void:
 	price_graph = %PriceGraph
@@ -74,12 +82,24 @@ func _ready() -> void:
 
 	tab_buttons[selected_resource].button_pressed = true
 
-	buy_button.pressed.connect(on_buy_pressed)
-	sell_button.pressed.connect(on_sell_pressed)
+	buy_button.button_down.connect(func(): _holding_buy = true; _hold_time = 0.0; _hold_interval = HOLD_START_INTERVAL; on_buy_pressed())
+	buy_button.button_up.connect(func(): _holding_buy = false)
+	sell_button.button_down.connect(func(): _holding_sell = true; _hold_time = 0.0; _hold_interval = HOLD_START_INTERVAL; on_sell_pressed())
+	sell_button.button_up.connect(func(): _holding_sell = false)
 	FundManager.resource_changed.connect(on_resource_changed)
 	update_ui()
 
 func _process(delta: float) -> void:
+	if _holding_buy or _holding_sell:
+		_hold_time += delta
+		if _hold_time >= _hold_interval:
+			_hold_time = 0.0
+			_hold_interval = max(HOLD_MIN_INTERVAL, _hold_interval * HOLD_RAMP_SPEED)
+			if _holding_buy:
+				on_buy_pressed()
+			else:
+				on_sell_pressed()
+
 	for res in price_history:
 		while price_history[res].size() > MAX_HISTORY:
 			price_history[res].pop_front()
@@ -118,9 +138,9 @@ func update_prices() -> void:
 
 func update_ui() -> void:
 	var sell_price: float = current_prices[selected_resource]
-	var buy_price: int = int(ceil(sell_price * BUY_MARKUP))
-	buy_price_label.text = "Buy Price: $%d" % [buy_price]
-	sell_price_label.text = "Sell Price: $%d" % [int(sell_price)]
+	var buy_price: float = snappedf(sell_price * BUY_MARKUP, 0.01)
+	buy_price_label.text = "Buy Price: $%.2f" % (buy_price * (10 if Input.is_key_pressed(KEY_SHIFT) else 1))
+	sell_price_label.text = "Sell Price: $%.2f" % (sell_price * (10 if Input.is_key_pressed(KEY_SHIFT) else 1))
 	own_label.text = "You Own: %d" % FundManager.get_amount(selected_resource)
 
 	if debug:
@@ -161,20 +181,24 @@ func _recalculate_price(res: FundManager.ResType) -> void:
 	current_prices[res] = max(1.0, base + wave1 + wave2 + wave3 + base * demand_pressure[res])
 
 func on_buy_pressed() -> void:
-	var buy_price: int = int(ceil(current_prices[selected_resource] * BUY_MARKUP))
-	if FundManager.take(FundManager.ResType.MONEY, buy_price):
-		FundManager.give(selected_resource, 1)
+	var amount: int = 10 if Input.is_key_pressed(KEY_SHIFT) else 1
+	var buy_price: float = snappedf(current_prices[selected_resource] * BUY_MARKUP, 0.01) * amount
+	if FundManager.take_money(buy_price):
+		FundManager.give(selected_resource, amount)
 		demand_pressure[selected_resource] = min(
-			demand_pressure[selected_resource] + PRESSURE_PER_BUY,
+			demand_pressure[selected_resource] + PRESSURE_PER_BUY * amount,
 			MAX_PRESSURE
 		)
 		_recalculate_price(selected_resource)
 	update_ui()
 
 func on_sell_pressed() -> void:
-	if FundManager.take(selected_resource, 1):
-		FundManager.give(FundManager.ResType.MONEY, int(current_prices[selected_resource]))
-		demand_pressure[selected_resource] -= PRESSURE_PER_SELL
+	var amount: int = 10 if Input.is_key_pressed(KEY_SHIFT) else 1
+	var owned: int = FundManager.get_amount(selected_resource)
+	var actual: int = mini(amount, owned)
+	if actual > 0 and FundManager.take(selected_resource, actual):
+		FundManager.give_money(snappedf(current_prices[selected_resource] * actual, 0.01))
+		demand_pressure[selected_resource] -= PRESSURE_PER_SELL * actual
 		_recalculate_price(selected_resource)
 	update_ui()
 

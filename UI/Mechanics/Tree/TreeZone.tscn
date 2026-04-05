@@ -13,26 +13,40 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=105693652]
 layout_mode = 2
 
-[node name="TreeDisplay" type="PanelContainer" parent="VBoxContainer" unique_id=2125933783 node_paths=PackedStringArray("progress_bar")]
+[node name="TreeDisplay" type="PanelContainer" parent="VBoxContainer" unique_id=2125933783 node_paths=PackedStringArray("progress_bar", "chop_button", "auto_chop_bars", "plant_button")]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 script = ExtResource("1_5u831")
 tree = ExtResource("2_y2yrj")
 progress_bar = NodePath("../ProgressBar")
+chop_button = NodePath("../ChopButton")
+auto_chop_bars = NodePath("../AutoChopBars")
+plant_button = NodePath("../PlantButton")
 
 [node name="TreeDelay" type="Timer" parent="VBoxContainer/TreeDisplay" unique_id=126554402]
-autostart = true
 
 [node name="ChopDelay" type="Timer" parent="VBoxContainer/TreeDisplay" unique_id=1811777738]
+one_shot = true
+
+[node name="PlantDelay" type="Timer" parent="VBoxContainer/TreeDisplay" unique_id=1922334455]
 one_shot = true
 
 [node name="ChopButton" type="Button" parent="VBoxContainer" unique_id=1336881296]
 layout_mode = 2
 text = "CHOP"
 
+[node name="PlantButton" type="Button" parent="VBoxContainer" unique_id=1447992367]
+layout_mode = 2
+text = "PLANT"
+
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=1117841903]
+layout_mode = 2
+
+[node name="AutoChopBars" type="VBoxContainer" parent="VBoxContainer" unique_id=1999123456]
 layout_mode = 2
 
 [connection signal="timeout" from="VBoxContainer/TreeDisplay/TreeDelay" to="VBoxContainer/TreeDisplay" method="_on_tree_delay_timeout"]
 [connection signal="timeout" from="VBoxContainer/TreeDisplay/ChopDelay" to="VBoxContainer/TreeDisplay" method="_on_chop_delay_timeout"]
+[connection signal="timeout" from="VBoxContainer/TreeDisplay/PlantDelay" to="VBoxContainer/TreeDisplay" method="_on_plant_delay_timeout"]
 [connection signal="pressed" from="VBoxContainer/ChopButton" to="VBoxContainer/TreeDisplay" method="_on_chop_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlantButton" to="VBoxContainer/TreeDisplay" method="_on_plant_button_pressed"]

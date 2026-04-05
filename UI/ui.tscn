@@ -91,18 +91,20 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PanelContainer" parent="TabContainer/Main/Main" unique_id=1257425739 instance=ExtResource("7_qgmx8")]
-layout_mode = 2
-
 [node name="Market" parent="TabContainer" unique_id=582036771 instance=ExtResource("1_dhe1o")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Finances" parent="TabContainer" unique_id=1871539225 instance=ExtResource("2_q0uhn")]
+[node name="Upgrades" parent="TabContainer" unique_id=1257425739 instance=ExtResource("7_qgmx8")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="Finances" parent="TabContainer" unique_id=1871539225 instance=ExtResource("2_q0uhn")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
 
 [node name="ProgressionManager" type="Control" parent="." unique_id=435586383 node_paths=PackedStringArray("sawmill", "mining", "smithing", "assembling")]
 anchors_preset = 0
