@@ -35,7 +35,10 @@ func _on_upgrade_unlocked(name: String) -> void:
 	var count := FundManager.get_upgrade_count(_upgrade_name)
 	count_label.text = "Purchased: %d" % count
 	if def.max_count > 0 and count >= def.max_count:
-		buy_button.disabled = true
-		buy_button.text = "MAXED"
+		if def.hide_when_maxed:
+			queue_free()
+		else:
+			buy_button.disabled = true
+			buy_button.text = "MAXED"
 	else:
 		_refresh_price()

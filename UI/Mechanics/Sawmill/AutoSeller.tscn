@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://autoseller"]
+
+[ext_resource type="Script" uid="uid://b8dgjtt4s80k0" path="res://UI/Mechanics/Sawmill/auto_seller.gd" id="1_asel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sell"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2, 0.85, 0.35, 1)
+
+[node name="AutoSeller" type="PanelContainer" unique_id=100000001]
+theme_override_styles/panel = SubResource("StyleBoxFlat_sell")
+script = ExtResource("1_asel")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=100000002]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="VBox" unique_id=100000003]
+layout_mode = 2
+text = "Auto Seller"
+horizontal_alignment = 1
+
+[node name="ResourceRow" type="HBoxContainer" parent="VBox" unique_id=100000004]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="LeftBtn" type="Button" parent="VBox/ResourceRow" unique_id=100000005]
+layout_mode = 2
+text = "<"
+
+[node name="ResourceLabel" type="Label" parent="VBox/ResourceRow" unique_id=100000006]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Wood"
+horizontal_alignment = 1
+
+[node name="RightBtn" type="Button" parent="VBox/ResourceRow" unique_id=100000007]
+layout_mode = 2
+text = ">"
+
+[node name="AmountRow" type="HBoxContainer" parent="VBox" unique_id=100000008]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="AmountCaption" type="Label" parent="VBox/AmountRow" unique_id=100000009]
+layout_mode = 2
+text = "Amount/s:"
+
+[node name="MinusBtn" type="Button" parent="VBox/AmountRow" unique_id=100000010]
+layout_mode = 2
+text = "-"
+
+[node name="AmountLabel" type="Label" parent="VBox/AmountRow" unique_id=100000011]
+layout_mode = 2
+custom_minimum_size = Vector2(40, 0)
+text = "1"
+horizontal_alignment = 1
+
+[node name="PlusBtn" type="Button" parent="VBox/AmountRow" unique_id=100000012]
+layout_mode = 2
+text = "+"
+
+[node name="StatusLabel" type="Label" parent="VBox" unique_id=100000013]
+layout_mode = 2
+text = "Selling 1/s @ ??? ea  (own: 0)"
+horizontal_alignment = 1
+autowrap_mode = 3

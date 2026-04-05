@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://dvjsfobfqmfnp"]
 
 [ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="1_dhe1o"]
-[ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel/ResourcePanel.tscn" id="1_e707p"]
+[ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/Resources/log.png" id="1_o2jkc"]
 [ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="1_q0uhn"]
+[ext_resource type="Texture2D" uid="uid://32na8hxwc1g8" path="res://Art/Resources/plank.png" id="2_2qbci"]
 [ext_resource type="PackedScene" uid="uid://moneyctr" path="res://UI/DisplayPanels/MoneyCounter/MoneyCounter.tscn" id="2_q0uhn"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="3_d050y"]
+[ext_resource type="Texture2D" uid="uid://boqdit41fomc6" path="res://Art/Chair/0001.png" id="3_ow1yt"]
 [ext_resource type="PackedScene" uid="uid://f25rdk63o4bp" path="res://UI/Mechanics/Mining/MiningZone.tscn" id="4_qgmx8"]
 [ext_resource type="PackedScene" uid="uid://ch6kb7g866tm1" path="res://UI/Mechanics/Smithing/SmithingZone.tscn" id="5_vx7wu"]
 [ext_resource type="PackedScene" uid="uid://dq3ohxr5mg2f5" path="res://UI/Mechanics/Assembling/AssemblingZone.tscn" id="6_r2vy3"]
 [ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/DisplayPanels/Upgrades/Upgrades.tscn" id="7_qgmx8"]
+[ext_resource type="PackedScene" uid="uid://rsctr" path="res://UI/DisplayPanels/ResourceCounter/ResourceCounter.tscn" id="8_rsctr"]
 [ext_resource type="Script" uid="uid://bmcnjk2i3mjsk" path="res://UI/DisplayPanels/ProgressionManager/progression_manager.gd" id="10_vx7wu"]
 
 [sub_resource type="Gradient" id="Gradient_e707p"]
@@ -51,8 +54,12 @@ anchor_bottom = 1.0
 offset_top = 6.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/tab_separation = 16
 theme_override_font_sizes/font_size = 32
 current_tab = 0
+tab_4/icon = ExtResource("1_o2jkc")
+tab_5/icon = ExtResource("2_2qbci")
+tab_8/icon = ExtResource("3_ow1yt")
 
 [node name="Main" type="MarginContainer" parent="TabContainer" unique_id=1869026037]
 layout_mode = 2
@@ -63,10 +70,6 @@ theme_override_constants/margin_bottom = 24
 metadata/_tab_index = 0
 
 [node name="Main" type="VBoxContainer" parent="TabContainer/Main" unique_id=1808981454]
-layout_mode = 2
-
-[node name="ResourcePanel" parent="TabContainer/Main/Main" unique_id=834301793 instance=ExtResource("1_e707p")]
-custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 
 [node name="HBox" type="HBoxContainer" parent="TabContainer/Main/Main" unique_id=1406997758]
@@ -105,6 +108,35 @@ metadata/_tab_index = 2
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
+
+[node name="Wood" parent="TabContainer" unique_id=2100000001 instance=ExtResource("8_rsctr")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="Planks" parent="TabContainer" unique_id=2100000002 instance=ExtResource("8_rsctr")]
+visible = false
+layout_mode = 2
+tracked_resource = 2
+metadata/_tab_index = 5
+
+[node name="Metal" parent="TabContainer" unique_id=2100000003 instance=ExtResource("8_rsctr")]
+visible = false
+layout_mode = 2
+tracked_resource = 3
+metadata/_tab_index = 6
+
+[node name="Nails" parent="TabContainer" unique_id=2100000004 instance=ExtResource("8_rsctr")]
+visible = false
+layout_mode = 2
+tracked_resource = 4
+metadata/_tab_index = 7
+
+[node name="Chairs" parent="TabContainer" unique_id=2100000005 instance=ExtResource("8_rsctr")]
+visible = false
+layout_mode = 2
+tracked_resource = 5
+metadata/_tab_index = 8
 
 [node name="ProgressionManager" type="Control" parent="." unique_id=435586383 node_paths=PackedStringArray("sawmill", "mining", "smithing", "assembling")]
 anchors_preset = 0

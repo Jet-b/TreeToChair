@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/Resources/log.png" id="2_3wemg"]
 [ext_resource type="PackedScene" uid="uid://bcgfapk3ttm3s" path="res://UI/Mechanics/Sawmill/Log.tscn" id="3_6xj0q"]
 [ext_resource type="Texture2D" uid="uid://rgsi0ee27rv8" path="res://Art/UI/Wood Shredder.png" id="4_wg6hk"]
+[ext_resource type="PackedScene" uid="uid://autoseller" path="res://UI/Mechanics/Sawmill/AutoSeller.tscn" id="5_asel"]
+[ext_resource type="PackedScene" uid="uid://autobuyer" path="res://UI/Mechanics/Sawmill/AutoBuyer.tscn" id="6_abuy"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=2016291272]
 offset_right = 300.0
@@ -60,3 +62,9 @@ angle_max = 720.0
 scale_amount_min = 3.0
 scale_amount_max = 3.0
 color = Color(0.6784314, 0.4392157, 0.09803922, 1)
+
+[node name="AutoSeller" parent="VBoxContainer" instance=ExtResource("5_asel")]
+layout_mode = 2
+
+[node name="AutoBuyer" parent="VBoxContainer" instance=ExtResource("6_abuy")]
+layout_mode = 2

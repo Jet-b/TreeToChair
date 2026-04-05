@@ -25,12 +25,16 @@ class UpgradeDef:
 	var price: int
 	var price_scale: float  # multiplier per purchase, e.g. 1.5 = 50% more each time
 	var max_count: int  # 0 = unlimited
+	var hide_when_maxed: bool  # remove the upgrade card from UI once bought
+	var requires: String   # name of upgrade that must be purchased first ("" = always visible)
 
-	func _init(p_description: String, p_price: int, p_price_scale: float, p_max_count: int) -> void:
+	func _init(p_description: String, p_price: int, p_price_scale: float, p_max_count: int, p_hide_when_maxed: bool = false, p_requires: String = "") -> void:
 		description = p_description
 		price = p_price
 		price_scale = p_price_scale
 		max_count = p_max_count
+		hide_when_maxed = p_hide_when_maxed
+		requires = p_requires
 
 var UPGRADES: Dictionary = {}
 
@@ -43,14 +47,46 @@ var _money: float = 0.0
 func _ready() -> void:
 	# Initialise upgrade definitions — name is the key
 	UPGRADES = {
-		#  name 							description                   price, price_scale, max_count (0 = unlimited)
-		"AUTO_PLANT":        UpgradeDef.new("+1 automatic tree planter",   0,  1.5,  0),
-		"AUTO_PLANT_SPEED": UpgradeDef.new("Automatic tree planters work faster",   0,  1.5,  10),
-		"MAX_TREES":         UpgradeDef.new("Multiplies maximum trees by 2",       0,  2.0,  10),
-		"AUTO_CHOP":        UpgradeDef.new("+1 automatic wood harvester",   0,  1.5,  16),
-		"AUTO_CHOP_SPEED": UpgradeDef.new("Automatic wood harvesters work faster",   0,  1.5,  10),
-		"LOG_GRAVITY":      UpgradeDef.new("Logs fall faster",   0,  2.0,  25),
+		# Progression: buy anything in a tier to reveal the next tier
+		# name               description                                price  scale  max   hide   requires
+		"AUTO_CHOP":        UpgradeDef.new("+1 automatic wood harvester",         0, 1.5, 16,  false, ""),
+		"AUTO_PLANT":       UpgradeDef.new("+1 automatic tree planter",            0, 1.5,  0,  false, "AUTO_CHOP"),
+		"AUTO_CHOP_SPEED":  UpgradeDef.new("Automatic wood harvesters work faster", 0, 1.5, 100, false, "AUTO_CHOP"),
+		"MAX_TREES":        UpgradeDef.new("Multiplies maximum trees by 2",        0, 2.0, 25,  false, "AUTO_PLANT"),
+		"AUTO_PLANT_SPEED": UpgradeDef.new("Automatic tree planters work faster",  0, 1.5, 100, false, "AUTO_PLANT"),
+		"LOG_GRAVITY":      UpgradeDef.new("Logs fall into the sawmill faster",    0, 2.0, 40,  false, "MAX_TREES"),
+		"AUTO_SELL":        UpgradeDef.new("Unlock auto seller",                   0, 1.0,  1,  true,  "LOG_GRAVITY"),
+		"AUTO_BUY":         UpgradeDef.new("Unlock auto buyer",                    0, 1.0,  1,  true,  "AUTO_SELL"),
 	}
+
+	# =======================================================================
+	# UPGRADE SUGGESTIONS (not yet implemented)
+	# =======================================================================
+	#
+	# MINING
+	#   "AUTO_MINE"           — automatically mines metal over time
+	#   "MINING_YIELD"        — each mine action yields +1 extra metal
+	#   "MINING_SPEED"        — reduces the cooldown between mining actions
+	#
+	# SMITHING
+	#   "AUTO_SMITH"          — automatically converts metal into nails
+	#   "BULK_SMITH"          — each smelt produces 2x nails
+	#   "SMITH_SPEED"         — reduces smithing cooldown
+	#
+	# ASSEMBLING
+	#   "AUTO_ASSEMBLE"       — chairs are assembled automatically
+	#   "FASTER_ASSEMBLY"     — reduces time to build a chair
+	#
+	# MARKET
+	#   "MARKET_INSIGHT"      — reveals demand pressure on the price graph
+	#   "INSIDER_TRADING"     — reduces buy price markup (e.g. 1.2 → 1.1)
+	#   "BULK_DEAL"           — shift key multiplier increases from 10 to 25
+	#
+	# PROGRESSION
+	#   "UNLOCK_SMITHING"     — reveals the smithing zone
+	#   "UNLOCK_ASSEMBLING"   — reveals the assembling zone
+	#   "UNLOCK_MINING"       — reveals the mining zone
+	# =======================================================================
 
 	# Initialise ResTypes to 0 (MONEY handled separately as float)
 	for r in ResType.values():
@@ -121,6 +157,13 @@ func get_next_price(name: String) -> int:
 		return 0
 	var def: UpgradeDef = UPGRADES[name]
 	return int(def.price * pow(def.price_scale, _upgrades.get(name, 0)))
+
+# Returns true if this upgrade's prerequisite has been purchased (or it has none)
+func is_upgrade_visible(name: String) -> bool:
+	if not UPGRADES.has(name):
+		return false
+	var req: String = UPGRADES[name].requires
+	return req == "" or get_upgrade_count(req) > 0
 
 func unlock_upgrade(name: String) -> bool:
 	if not UPGRADES.has(name):

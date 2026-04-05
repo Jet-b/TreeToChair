@@ -32,7 +32,7 @@ func _update_tab_title(amount: float) -> void:
 	if parent is TabContainer:
 		var idx = parent.get_tab_idx_from_control(self)
 		if idx >= 0:
-			parent.set_tab_title(idx, "$%.2f" % amount)
+			parent.set_tab_title(idx, ("$%.2f" % amount).lpad(12))
 
 func on_resource_changed(type: FundManager.ResType, amount: float) -> void:
 	if type == FundManager.ResType.MONEY:

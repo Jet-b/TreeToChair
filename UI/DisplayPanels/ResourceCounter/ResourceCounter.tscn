@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://rsctr"]
+
+[ext_resource type="Script" path="res://UI/DisplayPanels/ResourceCounter/resource_counter.gd" id="1_rsctr"]
+[ext_resource type="Script" uid="uid://wdhxdh2stmd5" path="res://UI/Mechanics/StockMarket/price_graph.gd" id="2_pg"]
+
+[node name="ResourceCounter" type="VBoxContainer" unique_id=1111111111]
+script = ExtResource("1_rsctr")
+
+[node name="AmountLabel" type="Label" parent="." unique_id=2222222222]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResourceGraph" type="Control" parent="." unique_id=3333333333]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_pg")
+line_color = Color(0.32700607, 0.32700524, 0.3387213, 1)
+bg_color = Color(0.050980393, 0.050980393, 0.12156863, 0)
+text_color = Color(0, 0, 0, 1)
+last_point_color = Color(0, 0, 0, 1)

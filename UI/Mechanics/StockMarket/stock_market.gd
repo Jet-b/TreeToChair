@@ -58,6 +58,7 @@ const HOLD_MIN_INTERVAL := 0.02
 const HOLD_RAMP_SPEED := 0.85
 
 func _ready() -> void:
+	add_to_group("stock_market_node")
 	price_graph = %PriceGraph
 	own_label = %OwnLabel
 	buy_price_label = %BuyLabel
@@ -204,4 +205,30 @@ func on_sell_pressed() -> void:
 
 func on_resource_changed(type, amount) -> void:
 	if type == selected_resource or type == FundManager.ResType.MONEY:
+		update_ui()
+
+func get_current_price(res: FundManager.ResType) -> float:
+	return current_prices.get(res, 1.0)
+
+func auto_sell(res: FundManager.ResType, amount: int) -> void:
+	var owned: int = FundManager.get_amount(res)
+	var actual: int = mini(amount, owned)
+	if actual <= 0:
+		return
+	if FundManager.take(res, actual):
+		FundManager.give_money(snappedf(current_prices.get(res, 1.0) * actual, 0.01))
+		demand_pressure[res] = max(-MAX_PRESSURE, demand_pressure[res] - PRESSURE_PER_SELL * actual)
+		_recalculate_price(res)
+	if res == selected_resource:
+		update_ui()
+
+func auto_buy(res: FundManager.ResType, amount: int) -> void:
+	if amount <= 0:
+		return
+	var buy_price: float = snappedf(current_prices.get(res, 1.0) * BUY_MARKUP, 0.01) * amount
+	if FundManager.take_money(buy_price):
+		FundManager.give(res, amount)
+		demand_pressure[res] = min(MAX_PRESSURE, demand_pressure[res] + PRESSURE_PER_BUY * amount)
+		_recalculate_price(res)
+	if res == selected_resource:
 		update_ui()
