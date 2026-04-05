@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://csettingstab1"]
+
+[ext_resource type="Script" uid="uid://cstabgd12345" path="res://UI/DisplayPanels/Settings/settings_tab.gd" id="1_stab"]
+
+[node name="SettingsTab" type="MarginContainer" unique_id=3200000001]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+script = ExtResource("1_stab")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=3200000002]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="VBoxContainer" unique_id=3200000003]
+layout_mode = 2
+text = "Audio Settings"
+theme_override_font_sizes/font_size = 28
+
+[node name="HSep1" type="HSeparator" parent="VBoxContainer" unique_id=3200000004]
+layout_mode = 2
+
+[node name="MusicRow" type="HBoxContainer" parent="VBoxContainer" unique_id=3200000005]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MusicLabel" type="Label" parent="VBoxContainer/MusicRow" unique_id=3200000006]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+text = "Music Volume"
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/MusicRow" unique_id=3200000007]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(300, 0)
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicPct" type="Label" parent="VBoxContainer/MusicRow" unique_id=3200000008]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 0)
+text = "100%"
+vertical_alignment = 1
+
+[node name="HSep2" type="HSeparator" parent="VBoxContainer" unique_id=3200000009]
+layout_mode = 2
+
+[node name="SFXHeading" type="Label" parent="VBoxContainer" unique_id=3200000010]
+layout_mode = 2
+text = "Sound Effects"
+theme_override_font_sizes/font_size = 22
+
+[node name="BtnChk" type="CheckButton" parent="VBoxContainer" unique_id=3200000011]
+layout_mode = 2
+button_pressed = true
+text = "Button Clicks"
+
+[node name="ChopChk" type="CheckButton" parent="VBoxContainer" unique_id=3200000012]
+layout_mode = 2
+button_pressed = true
+text = "Tree Chop"
+
+[node name="PlantChk" type="CheckButton" parent="VBoxContainer" unique_id=3200000013]
+layout_mode = 2
+button_pressed = true
+text = "Tree Plant"
+
+[node name="NailChk" type="CheckButton" parent="VBoxContainer" unique_id=3200000014]
+layout_mode = 2
+button_pressed = true
+text = "Nails"
+
+[node name="MetalChk" type="CheckButton" parent="VBoxContainer" unique_id=3200000015]
+layout_mode = 2
+button_pressed = true
+text = "Metal"
+
+[node name="SawChk" type="CheckButton" parent="VBoxContainer" unique_id=3200000016]
+layout_mode = 2
+button_pressed = true
+text = "Sawmill"
+
+[node name="MoneyChk" type="CheckButton" parent="VBoxContainer" unique_id=3200000017]
+layout_mode = 2
+button_pressed = true
+text = "Market Sounds"
+
+[connection signal="value_changed" from="VBoxContainer/MusicRow/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/BtnChk" to="." method="_on_btn_chk_toggled"]
+[connection signal="toggled" from="VBoxContainer/ChopChk" to="." method="_on_chop_chk_toggled"]
+[connection signal="toggled" from="VBoxContainer/PlantChk" to="." method="_on_plant_chk_toggled"]
+[connection signal="toggled" from="VBoxContainer/NailChk" to="." method="_on_nail_chk_toggled"]
+[connection signal="toggled" from="VBoxContainer/MetalChk" to="." method="_on_metal_chk_toggled"]
+[connection signal="toggled" from="VBoxContainer/SawChk" to="." method="_on_saw_chk_toggled"]
+[connection signal="toggled" from="VBoxContainer/MoneyChk" to="." method="_on_money_chk_toggled"]

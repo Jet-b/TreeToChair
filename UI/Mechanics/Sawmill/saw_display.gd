@@ -17,8 +17,16 @@ var _fall_speed := 0.0
 var _planks_per_log: int = 1
 const FALL_SPEED_BASE := 8.0
 
+var _saw_sound := preload("res://Sound/Saw/saw.mp3")
+var _saw_player: AudioStreamPlayer
+
 
 func _ready():
+	_saw_player = AudioStreamPlayer.new()
+	add_child(_saw_player)
+	_saw_player.stream = _saw_sound
+	_saw_player.volume_db = -5.0
+	_saw_player.bus = Settings.BUS_SAW
 	FundManager.resource_changed.connect(wood_update)
 	FundManager.upgrade_unlocked.connect(_on_upgrade_unlocked)
 	display_all_wood(FundManager.get_amount(FundManager.ResType.WOOD))
@@ -150,5 +158,7 @@ func _on_upgrade_unlocked(name: String) -> void:
 func _on_saw_delay_timeout(particle: CPUParticles2D) -> void:
 	particle.emitting = false
 	FundManager.give(FundManager.ResType.PLANKS, _planks_per_log)
+	_saw_player.stop()
+	_saw_player.play()
 	await get_tree().create_timer(particle.lifetime).timeout
 	particle.queue_free()
