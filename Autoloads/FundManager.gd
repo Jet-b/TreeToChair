@@ -48,45 +48,48 @@ func _ready() -> void:
 	# Initialise upgrade definitions — name is the key
 	UPGRADES = {
 		# Progression: buy anything in a tier to reveal the next tier
-		# name               description                                price  scale  max   hide   requires
-		"AUTO_CHOP":        UpgradeDef.new("+1 automatic wood harvester",         0, 1.5, 16,  false, ""),
-		"AUTO_PLANT":       UpgradeDef.new("+1 automatic tree planter",            0, 1.5,  0,  false, "AUTO_CHOP"),
-		"AUTO_CHOP_SPEED":  UpgradeDef.new("Automatic wood harvesters work faster", 0, 1.5, 100, false, "AUTO_CHOP"),
-		"MAX_TREES":        UpgradeDef.new("Multiplies maximum trees by 2",        0, 2.0, 25,  false, "AUTO_PLANT"),
-		"AUTO_PLANT_SPEED": UpgradeDef.new("Automatic tree planters work faster",  0, 1.5, 100, false, "AUTO_PLANT"),
-		"LOG_GRAVITY":      UpgradeDef.new("Logs fall into the sawmill faster",    0, 2.0, 40,  false, "MAX_TREES"),
-		"AUTO_SELL":        UpgradeDef.new("Unlock auto seller",                   0, 1.0,  1,  true,  "LOG_GRAVITY"),
-		"AUTO_BUY":         UpgradeDef.new("Unlock auto buyer",                    0, 1.0,  1,  true,  "AUTO_SELL"),
-	}
+		# name                description                                        price   scale  max   hide   requires
 
-	# =======================================================================
-	# UPGRADE SUGGESTIONS (not yet implemented)
-	# =======================================================================
-	#
-	# MINING
-	#   "AUTO_MINE"           — automatically mines metal over time
-	#   "MINING_YIELD"        — each mine action yields +1 extra metal
-	#   "MINING_SPEED"        — reduces the cooldown between mining actions
-	#
-	# SMITHING
-	#   "AUTO_SMITH"          — automatically converts metal into nails
-	#   "BULK_SMITH"          — each smelt produces 2x nails
-	#   "SMITH_SPEED"         — reduces smithing cooldown
-	#
-	# ASSEMBLING
-	#   "AUTO_ASSEMBLE"       — chairs are assembled automatically
-	#   "FASTER_ASSEMBLY"     — reduces time to build a chair
-	#
-	# MARKET
-	#   "MARKET_INSIGHT"      — reveals demand pressure on the price graph
-	#   "INSIDER_TRADING"     — reduces buy price markup (e.g. 1.2 → 1.1)
-	#   "BULK_DEAL"           — shift key multiplier increases from 10 to 25
-	#
-	# PROGRESSION
-	#   "UNLOCK_SMITHING"     — reveals the smithing zone
-	#   "UNLOCK_ASSEMBLING"   — reveals the assembling zone
-	#   "UNLOCK_MINING"       — reveals the mining zone
-	# =======================================================================
+		# --- Tree zone (always visible at start) ---
+		"AUTO_CHOP":          UpgradeDef.new("+1 automatic wood harvester",          30, 1.5, 16,  false, ""),
+		"AUTO_PLANT":         UpgradeDef.new("+1 automatic tree planter",            50, 1.5,  0,  false, "AUTO_CHOP"),
+		"AUTO_CHOP_SPEED":    UpgradeDef.new("Automatic wood harvesters work faster",75, 1.5, 100, false, "AUTO_CHOP"),
+		"MAX_TREES":          UpgradeDef.new("Multiplies maximum trees by 2",       100, 2.0, 25,  false, "AUTO_PLANT"),
+		"AUTO_PLANT_SPEED":   UpgradeDef.new("Automatic tree planters work faster", 100, 1.5, 100, false, "AUTO_PLANT"),
+
+		# --- Sawmill zone unlock & upgrades ---
+		"UNLOCK_SAWMILL":     UpgradeDef.new("Unlock the sawmill zone",             150, 1.0,  1,  true,  "AUTO_CHOP"),
+		"LOG_GRAVITY":        UpgradeDef.new("Logs fall into the sawmill faster",   120, 2.0, 40,  false, "UNLOCK_SAWMILL"),
+		"SAWMILL_SPEED":      UpgradeDef.new("Sawmill processes logs faster",       150, 1.5, 20,  false, "UNLOCK_SAWMILL"),
+		"DOUBLE_PLANKS":      UpgradeDef.new("Each log yields 2 planks",            400, 1.0,  1,  false, "SAWMILL_SPEED"),
+
+		# --- Mining zone unlock & upgrades ---
+		"UNLOCK_MINING":      UpgradeDef.new("Unlock the mining zone",              250, 1.0,  1,  true,  "UNLOCK_SAWMILL"),
+		"MINING_SPEED":       UpgradeDef.new("Reduces the mining cooldown",         200, 1.5, 20,  false, "UNLOCK_MINING"),
+		"MINING_YIELD":       UpgradeDef.new("Each mine strike yields +1 extra metal", 300, 1.5, 10, false, "UNLOCK_MINING"),
+		"AUTO_MINE":          UpgradeDef.new("+1 automatic miner",                  400, 1.5, 16,  false, "MINING_SPEED"),
+
+		# --- Smithing zone unlock & upgrades ---
+		"UNLOCK_SMITHING":    UpgradeDef.new("Unlock the smithing zone",            500, 1.0,  1,  true,  "UNLOCK_MINING"),
+		"SMITH_SPEED":        UpgradeDef.new("Reduces smithing cooldown",           350, 1.5, 20,  false, "UNLOCK_SMITHING"),
+		"BULK_SMITH":         UpgradeDef.new("Each smelt produces 2x nails",        600, 1.0,  1,  false, "SMITH_SPEED"),
+		"AUTO_SMITH":         UpgradeDef.new("+1 automatic smelter",                700, 1.5, 16,  false, "SMITH_SPEED"),
+
+		# --- Assembling zone unlock & upgrades ---
+		"UNLOCK_ASSEMBLING":  UpgradeDef.new("Unlock the assembling zone",          800, 1.0,  1,  true,  "UNLOCK_SMITHING"),
+		"FASTER_ASSEMBLY":    UpgradeDef.new("Reduces time to build a chair",       400, 1.5, 20,  false, "UNLOCK_ASSEMBLING"),
+		"BULK_ASSEMBLY":      UpgradeDef.new("Produce 2 chairs per assembly",      1000, 1.0,  1,  false, "FASTER_ASSEMBLY"),
+		"AUTO_ASSEMBLE":      UpgradeDef.new("+1 automatic assembler",             1500, 1.5, 16,  false, "FASTER_ASSEMBLY"),
+
+		# --- Market upgrades ---
+		"INSIDER_TRADING":    UpgradeDef.new("Reduces the buy price markup",        500, 1.5, 10,  false, "UNLOCK_SAWMILL"),
+		"BULK_DEAL":          UpgradeDef.new("Shift key buys/sells 25x instead of 10x", 800, 1.0, 1, false, "INSIDER_TRADING"),
+		"MARKET_INSIGHT":     UpgradeDef.new("Shows the underlying price wave on the market graph", 300, 1.0, 1, false, "UNLOCK_SAWMILL"),
+
+		# --- Auto seller / buyer ---
+		"AUTO_SELL":          UpgradeDef.new("Unlock auto seller",                  700, 1.0,  1,  true,  "LOG_GRAVITY"),
+		"AUTO_BUY":           UpgradeDef.new("Unlock auto buyer",                  1000, 1.0,  1,  true,  "AUTO_SELL"),
+	}
 
 	# Initialise ResTypes to 0 (MONEY handled separately as float)
 	for r in ResType.values():

@@ -88,6 +88,23 @@ func _ready() -> void:
 	sell_button.button_down.connect(func(): _holding_sell = true; _hold_time = 0.0; _hold_interval = HOLD_START_INTERVAL; on_sell_pressed())
 	sell_button.button_up.connect(func(): _holding_sell = false)
 	FundManager.resource_changed.connect(on_resource_changed)
+	FundManager.upgrade_unlocked.connect(_on_upgrade_unlocked)
+
+	# Apply already-purchased market upgrades
+	if FundManager.has_upgrade("MARKET_INSIGHT"):
+		debug = true
+	var insider_count := FundManager.get_upgrade_count("INSIDER_TRADING")
+	if insider_count > 0:
+		BUY_MARKUP = maxf(1.01, BUY_MARKUP - insider_count * 0.01)
+
+	update_ui()
+
+func _on_upgrade_unlocked(name: String) -> void:
+	match name:
+		"MARKET_INSIGHT":
+			debug = true
+		"INSIDER_TRADING":
+			BUY_MARKUP = maxf(1.01, BUY_MARKUP - 0.01)
 	update_ui()
 
 func _process(delta: float) -> void:
@@ -140,8 +157,9 @@ func update_prices() -> void:
 func update_ui() -> void:
 	var sell_price: float = current_prices[selected_resource]
 	var buy_price: float = snappedf(sell_price * BUY_MARKUP, 0.01)
-	buy_price_label.text = "Buy Price: $%.2f" % (buy_price * (10 if Input.is_key_pressed(KEY_SHIFT) else 1))
-	sell_price_label.text = "Sell Price: $%.2f" % (sell_price * (10 if Input.is_key_pressed(KEY_SHIFT) else 1))
+	var shift_qty: int = 25 if FundManager.has_upgrade("BULK_DEAL") else 10
+	buy_price_label.text = "Buy Price: $%.2f" % (buy_price * (shift_qty if Input.is_key_pressed(KEY_SHIFT) else 1))
+	sell_price_label.text = "Sell Price: $%.2f" % (sell_price * (shift_qty if Input.is_key_pressed(KEY_SHIFT) else 1))
 	own_label.text = "You Own: %d" % FundManager.get_amount(selected_resource)
 
 	if debug:
@@ -182,7 +200,8 @@ func _recalculate_price(res: FundManager.ResType) -> void:
 	current_prices[res] = max(1.0, base + wave1 + wave2 + wave3 + base * demand_pressure[res])
 
 func on_buy_pressed() -> void:
-	var amount: int = 10 if Input.is_key_pressed(KEY_SHIFT) else 1
+	var shift_qty: int = 25 if FundManager.has_upgrade("BULK_DEAL") else 10
+	var amount: int = shift_qty if Input.is_key_pressed(KEY_SHIFT) else 1
 	var buy_price: float = snappedf(current_prices[selected_resource] * BUY_MARKUP, 0.01) * amount
 	if FundManager.take_money(buy_price):
 		FundManager.give(selected_resource, amount)
@@ -194,7 +213,8 @@ func on_buy_pressed() -> void:
 	update_ui()
 
 func on_sell_pressed() -> void:
-	var amount: int = 10 if Input.is_key_pressed(KEY_SHIFT) else 1
+	var shift_qty: int = 25 if FundManager.has_upgrade("BULK_DEAL") else 10
+	var amount: int = shift_qty if Input.is_key_pressed(KEY_SHIFT) else 1
 	var owned: int = FundManager.get_amount(selected_resource)
 	var actual: int = mini(amount, owned)
 	if actual > 0 and FundManager.take(selected_resource, actual):

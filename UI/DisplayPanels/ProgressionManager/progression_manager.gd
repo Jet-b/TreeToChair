@@ -6,17 +6,15 @@ extends Control
 @export var assembling : Control
 
 func _ready() -> void:
-	sawmill.modulate.a = 0
-	mining.modulate.a = 0
-	smithing.modulate.a = 0
-	assembling.modulate.a = 0
+	sawmill.visible = FundManager.has_upgrade("UNLOCK_SAWMILL")
+	mining.visible = FundManager.has_upgrade("UNLOCK_MINING")
+	smithing.visible = FundManager.has_upgrade("UNLOCK_SMITHING")
+	assembling.visible = FundManager.has_upgrade("UNLOCK_ASSEMBLING")
+	FundManager.upgrade_unlocked.connect(_on_upgrade_unlocked)
 
-func _process(delta: float) -> void:
-	if FundManager.get_amount(FundManager.ResType.WOOD) > 1:
-		sawmill.modulate.a = 255
-		if FundManager.get_amount(FundManager.ResType.PLANKS) > 1:
-			mining.modulate.a = 255
-			if FundManager.get_amount(FundManager.ResType.METAL) > 1:
-				smithing.modulate.a = 255
-				if FundManager.get_amount(FundManager.ResType.NAILS) > 1:
-					assembling.modulate.a = 255
+func _on_upgrade_unlocked(name: String) -> void:
+	match name:
+		"UNLOCK_SAWMILL":    sawmill.visible = true
+		"UNLOCK_MINING":     mining.visible = true
+		"UNLOCK_SMITHING":   smithing.visible = true
+		"UNLOCK_ASSEMBLING": assembling.visible = true

@@ -14,6 +14,7 @@ var holding_wood := false
 var clickable_sprites = []
 var _spin_rates: Dictionary = {}  # sprite -> radians/sec
 var _fall_speed := 0.0
+var _planks_per_log: int = 1
 const FALL_SPEED_BASE := 8.0
 
 
@@ -22,6 +23,13 @@ func _ready():
 	FundManager.upgrade_unlocked.connect(_on_upgrade_unlocked)
 	display_all_wood(FundManager.get_amount(FundManager.ResType.WOOD))
 	_fall_speed = FALL_SPEED_BASE * FundManager.get_upgrade_count("LOG_GRAVITY")
+	# Apply already-purchased SAWMILL_SPEED
+	var speed_count := FundManager.get_upgrade_count("SAWMILL_SPEED")
+	if speed_count > 0:
+		saw_delay = max(0.1, saw_delay - speed_count * 0.1)
+	# Apply already-purchased DOUBLE_PLANKS
+	if FundManager.has_upgrade("DOUBLE_PLANKS"):
+		_planks_per_log = 2
 
 func _process(delta: float) -> void:
 	if _fall_speed <= 0.0:
@@ -134,10 +142,13 @@ func run_sawmill():
 func _on_upgrade_unlocked(name: String) -> void:
 	if name == "LOG_GRAVITY":
 		_fall_speed += FALL_SPEED_BASE
-	
+	elif name == "SAWMILL_SPEED":
+		saw_delay = max(0.1, saw_delay - 0.1)
+	elif name == "DOUBLE_PLANKS":
+		_planks_per_log = 2
 
 func _on_saw_delay_timeout(particle: CPUParticles2D) -> void:
 	particle.emitting = false
-	FundManager.give(FundManager.ResType.PLANKS, 1)
+	FundManager.give(FundManager.ResType.PLANKS, _planks_per_log)
 	await get_tree().create_timer(particle.lifetime).timeout
 	particle.queue_free()
