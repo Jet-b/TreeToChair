@@ -3,16 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/DisplayPanels/Upgrades.tscn" id="1_2fwl4"]
 [ext_resource type="Script" uid="uid://btrjd1fbee52q" path="res://UI/ui.gd" id="1_e6gg6"]
 [ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="2_dajm1"]
-[ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://Art/Resources/tree.png" id="2_nm1m0"]
+[ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://Art/tree.png" id="2_nm1m0"]
 [ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="3_c7tqi"]
 [ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="4_hat8c"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="5_3sbvi"]
-[ext_resource type="PackedScene" uid="uid://moneyctr" path="res://UI/DisplayPanels/MoneyCounter.tscn" id="6_mc"]
+[ext_resource type="PackedScene" path="res://UI/DisplayPanels/MoneyCounter.tscn" id="6_mc"]
 [ext_resource type="PackedScene" uid="uid://f25rdk63o4bp" path="res://UI/Mechanics/Mining/MiningZone.tscn" id="8_4fiuh"]
 [ext_resource type="PackedScene" uid="uid://ch6kb7g866tm1" path="res://UI/Mechanics/Smithing/SmithingZone.tscn" id="8_h81ot"]
-[ext_resource type="Shader" uid="uid://bu3mg3p065i2w" path="res://UI/Mechanics/StockMarket/crt.gdshader" id="9_crt"]
-[ext_resource type="PackedScene" uid="uid://dq3ohxr5mg2f5" path="res://UI/Mechanics/Assembling/AssemblingZone.tscn" id="11_0w6e5"]
-[ext_resource type="Script" path="res://UI/crt_container.gd" id="12_crtc"]
 
 [sub_resource type="Gradient" id="Gradient_e6gg6"]
 offsets = PackedFloat32Array(0, 0.99759614)
@@ -20,16 +17,6 @@ colors = PackedColorArray(0, 0, 0.8117647, 1, 0.48853427, 0.653095, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hat8c"]
 gradient = SubResource("Gradient_e6gg6")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_crt"]
-shader = ExtResource("9_crt")
-shader_parameter/curvature = 4.5
-shader_parameter/scanline_intensity = 0.12
-shader_parameter/vignette_strength = 0.35
-shader_parameter/margin_x = 0.055
-shader_parameter/margin_y = 0.07
-shader_parameter/bevel_size = 0.018
-shader_parameter/glow_strength = 0.18
 
 [node name="UI" type="Window" unique_id=573929793]
 oversampling_override = 1.0
@@ -40,21 +27,7 @@ unresizable = true
 borderless = true
 script = ExtResource("1_e6gg6")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=888777666]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-material = SubResource("ShaderMaterial_crt")
-script = ExtResource("12_crtc")
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=888777667]
-size = Vector2i(1920, 1080)
-render_target_update_mode = 3
-
-[node name="TabContainer" type="TabContainer" parent="SubViewportContainer/SubViewport" unique_id=1631089989]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1631089989]
 z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,53 +45,46 @@ tab_0/title = "Main Tab"
 tab_0/icon = ExtResource("2_nm1m0")
 tab_1/title = "Stock Market"
 tab_2/title = "$0"
-tab_3/title = "Chair"
 
-[node name="MainTab" type="HBoxContainer" parent="SubViewportContainer/SubViewport/TabContainer" unique_id=463197997]
+[node name="MainTab" type="HBoxContainer" parent="TabContainer" unique_id=463197997]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_tab_index = 0
 metadata/_tab_name = "Main Tab"
 
-[node name="Upgrades" parent="SubViewportContainer/SubViewport/TabContainer/MainTab" unique_id=640017076 instance=ExtResource("1_2fwl4")]
+[node name="Upgrades" parent="TabContainer/MainTab" unique_id=640017076 instance=ExtResource("1_2fwl4")]
 layout_mode = 2
 
-[node name="TreeZone" parent="SubViewportContainer/SubViewport/TabContainer/MainTab" unique_id=2125933783 instance=ExtResource("2_dajm1")]
+[node name="TreeZone" parent="TabContainer/MainTab" unique_id=2125933783 instance=ExtResource("2_dajm1")]
 layout_mode = 2
 
-[node name="ResourcePanel" parent="SubViewportContainer/SubViewport/TabContainer/MainTab" unique_id=834301793 instance=ExtResource("4_hat8c")]
+[node name="ResourcePanel" parent="TabContainer/MainTab" unique_id=834301793 instance=ExtResource("4_hat8c")]
 layout_mode = 2
 
-[node name="SawZone" parent="SubViewportContainer/SubViewport/TabContainer/MainTab" unique_id=2016291272 instance=ExtResource("5_3sbvi")]
+[node name="SawZone" parent="TabContainer/MainTab" unique_id=2016291272 instance=ExtResource("5_3sbvi")]
 layout_mode = 2
 
-[node name="PanelContainer" parent="SubViewportContainer/SubViewport/TabContainer/MainTab" unique_id=530760337 instance=ExtResource("8_4fiuh")]
+[node name="PanelContainer" parent="TabContainer/MainTab" unique_id=530760337 instance=ExtResource("8_4fiuh")]
 layout_mode = 2
 
-[node name="SmithingZone" parent="SubViewportContainer/SubViewport/TabContainer/MainTab" unique_id=455808818 instance=ExtResource("8_h81ot")]
+[node name="SmithingZone" parent="TabContainer/MainTab" unique_id=455808818 instance=ExtResource("8_h81ot")]
 layout_mode = 2
 
-[node name="StockMarket" parent="SubViewportContainer/SubViewport/TabContainer" unique_id=262314408 instance=ExtResource("3_c7tqi")]
+[node name="StockMarket" parent="TabContainer" unique_id=262314408 instance=ExtResource("3_c7tqi")]
 visible = false
 layout_mode = 2
-TICK_INTERVAL = 0.1
+debug = true
 metadata/_tab_index = 1
 metadata/_tab_name = "Stock Market"
 
-[node name="MoneyCounter" parent="SubViewportContainer/SubViewport/TabContainer" unique_id=1702555876 instance=ExtResource("6_mc")]
+[node name="MoneyCounter" parent="TabContainer" unique_id=1702555876 instance=ExtResource("6_mc")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = "$0"
 
-[node name="Control" parent="SubViewportContainer/SubViewport/TabContainer" unique_id=45031767 instance=ExtResource("11_0w6e5")]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3
-metadata/_tab_name = "Chair"
-
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1252573028]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1252573028]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
