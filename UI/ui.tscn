@@ -1,12 +1,14 @@
-[gd_scene format=3 uid="uid://dvjsfobfqmfnp"]
+[gd_scene format=3 uid="uid://du5b6k2a7563v"]
 
+[ext_resource type="Texture2D" uid="uid://dvclrg3ely78y" path="res://Art/Wood-Icon.png" id="1_6q2ik"]
 [ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="1_dhe1o"]
-[ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/Resources/log.png" id="1_o2jkc"]
 [ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="1_q0uhn"]
-[ext_resource type="Texture2D" uid="uid://32na8hxwc1g8" path="res://Art/Resources/plank.png" id="2_2qbci"]
 [ext_resource type="PackedScene" uid="uid://moneyctr" path="res://UI/DisplayPanels/MoneyCounter/MoneyCounter.tscn" id="2_q0uhn"]
+[ext_resource type="Texture2D" uid="uid://6eoalcjb7aaf" path="res://Art/Plank-Icon.png" id="2_t31p1"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="3_d050y"]
+[ext_resource type="Texture2D" uid="uid://df7d2xykbdb0d" path="res://Art/Metal-Icon.png" id="3_kncd2"]
 [ext_resource type="Texture2D" uid="uid://boqdit41fomc6" path="res://Art/Chair/0001.png" id="3_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://dqq5vd32bmebu" path="res://Art/Nail-Icon.png" id="4_1sm7k"]
 [ext_resource type="PackedScene" uid="uid://f25rdk63o4bp" path="res://UI/Mechanics/Mining/MiningZone.tscn" id="4_qgmx8"]
 [ext_resource type="PackedScene" uid="uid://ch6kb7g866tm1" path="res://UI/Mechanics/Smithing/SmithingZone.tscn" id="5_vx7wu"]
 [ext_resource type="PackedScene" uid="uid://dq3ohxr5mg2f5" path="res://UI/Mechanics/Assembling/AssemblingZone.tscn" id="6_r2vy3"]
@@ -57,8 +59,10 @@ grow_vertical = 2
 theme_override_constants/tab_separation = 16
 theme_override_font_sizes/font_size = 32
 current_tab = 0
-tab_4/icon = ExtResource("1_o2jkc")
-tab_5/icon = ExtResource("2_2qbci")
+tab_4/icon = ExtResource("1_6q2ik")
+tab_5/icon = ExtResource("2_t31p1")
+tab_6/icon = ExtResource("3_kncd2")
+tab_7/icon = ExtResource("4_1sm7k")
 tab_8/icon = ExtResource("3_ow1yt")
 
 [node name="Main" type="MarginContainer" parent="TabContainer" unique_id=1869026037]

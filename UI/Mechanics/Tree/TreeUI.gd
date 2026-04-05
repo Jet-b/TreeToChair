@@ -159,4 +159,3 @@ func _on_auto_chop_timeout(timer: Timer) -> void:
 			FundManager.give(FundManager.ResType.WOOD, 2)
 			current_trees -= 1
 			return
-

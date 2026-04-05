@@ -58,4 +58,3 @@ func _on_swing_right_button_down() -> void:
 
 func break_ore():
 	FundManager.give(FundManager.ResType.METAL, 1 + _yield_bonus)
-

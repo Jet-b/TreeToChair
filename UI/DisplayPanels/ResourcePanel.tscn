@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://7gmaair8vjx8"]
+
+[ext_resource type="Script" path="res://UI/DisplayPanels/resource_panel.gd" id="1_04q2c"]
+
+[node name="ResourcePanel" type="PanelContainer" unique_id=834301793]
+script = ExtResource("1_04q2c")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1415890474]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1571937617]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoneyLabel" type="Label" parent="HBoxContainer" unique_id=1384007054]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Money: 0"
+
+[node name="WoodLabel" type="Label" parent="HBoxContainer" unique_id=266979859]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Wood: 0"
+
+[node name="PlanksLabel" type="Label" parent="HBoxContainer" unique_id=376577431]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Planks: 0"
+
+[node name="MetalLabel" type="Label" parent="HBoxContainer" unique_id=599088639]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Metal: 0"
+
+[node name="NailsLabel" type="Label" parent="HBoxContainer" unique_id=2073947931]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Nails: 0"
+
+[node name="ChairsLabel" type="Label" parent="HBoxContainer" unique_id=770705893]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Chairs: 0"
+
+[node name="Control2" type="Control" parent="HBoxContainer" unique_id=477126394]
+layout_mode = 2
+size_flags_horizontal = 3
