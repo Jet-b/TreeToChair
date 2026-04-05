@@ -53,6 +53,8 @@ func _ready() -> void:
 	_button_player = AudioStreamPlayer.new()
 	add_child(_button_player)
 	_button_player.stream = _button_sound
+	_button_player.volume_db = -8.0
+	_button_player.bus = Settings.BUS_BUTTON
 	# Initialise upgrade definitions — name is the key
 	UPGRADES = {
 		# Progression: buy anything in a tier to reveal the next tier

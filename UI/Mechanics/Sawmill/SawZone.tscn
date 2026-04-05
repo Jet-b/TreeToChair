@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/Resources/log.png" id="2_3wemg"]
 [ext_resource type="PackedScene" uid="uid://bcgfapk3ttm3s" path="res://UI/Mechanics/Sawmill/Log.tscn" id="3_6xj0q"]
 [ext_resource type="Texture2D" uid="uid://rgsi0ee27rv8" path="res://Art/UI/Wood Shredder.png" id="4_wg6hk"]
-[ext_resource type="PackedScene" uid="uid://autoseller" path="res://UI/Mechanics/Sawmill/AutoSeller.tscn" id="5_asel"]
-[ext_resource type="PackedScene" uid="uid://autobuyer" path="res://UI/Mechanics/Sawmill/AutoBuyer.tscn" id="6_abuy"]
+[ext_resource type="PackedScene" uid="uid://utoseller" path="res://UI/Mechanics/Sawmill/AutoSeller.tscn" id="5_asel"]
+[ext_resource type="PackedScene" uid="uid://utobuyer" path="res://UI/Mechanics/Sawmill/AutoBuyer.tscn" id="6_abuy"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=2016291272]
 offset_right = 300.0
@@ -16,9 +16,11 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=105693652]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="WoodDisplay" type="PanelContainer" parent="VBoxContainer" unique_id=2125933783 node_paths=PackedStringArray("saw_particles", "sawmill")]
-custom_minimum_size = Vector2(300, 150)
+custom_minimum_size = Vector2(300, 200)
+clip_contents = true
 layout_mode = 2
 script = ExtResource("1_srd1y")
 wood = ExtResource("2_3wemg")
@@ -39,8 +41,8 @@ layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Sawmill" unique_id=677091180]
-position = Vector2(150.00002, 25)
-scale = Vector2(0.42253524, 0.41666666)
+position = Vector2(174.00005, 29.000002)
+scale = Vector2(0.49014094, 0.48333335)
 texture = ExtResource("4_wg6hk")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/Sawmill" unique_id=1205941535]
@@ -63,8 +65,11 @@ scale_amount_min = 3.0
 scale_amount_max = 3.0
 color = Color(0.6784314, 0.4392157, 0.09803922, 1)
 
-[node name="AutoSeller" parent="VBoxContainer" instance=ExtResource("5_asel")]
+[node name="AutoSep" type="HSeparator" parent="VBoxContainer" unique_id=3400000001]
 layout_mode = 2
 
-[node name="AutoBuyer" parent="VBoxContainer" instance=ExtResource("6_abuy")]
+[node name="AutoSeller" parent="VBoxContainer" unique_id=430478601 instance=ExtResource("5_asel")]
+layout_mode = 2
+
+[node name="AutoBuyer" parent="VBoxContainer" unique_id=96478255 instance=ExtResource("6_abuy")]
 layout_mode = 2
