@@ -17,7 +17,6 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 FundManager="*res://Autoloads/FundManager.gd"
-Settings="*res://Autoloads/Settings.gd"
 
 [display]
 

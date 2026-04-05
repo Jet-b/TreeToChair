@@ -18,8 +18,6 @@ func _ready() -> void:
 	_nail_player = AudioStreamPlayer.new()
 	add_child(_nail_player)
 	_nail_player.stream = _nail_sound
-	_nail_player.volume_db = -5.0
-	_nail_player.bus = Settings.BUS_NAIL
 	$HBoxContainer/VSlider.scale.y = -1
 	FundManager.upgrade_unlocked.connect(_on_upgrade_unlocked)
 	# Apply already-purchased upgrades on load
