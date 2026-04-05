@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcgfapk3ttm3s"]
 
 [ext_resource type="Script" uid="uid://be1820yakbmcs" path="res://UI/Mechanics/Sawmill/log.gd" id="1_5f33o"]
-[ext_resource type="Texture2D" path="res://Art/log.png" id="1_vmjy8"]
+[ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/Resources/log.png" id="2_vcfxq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5f33o"]
 
@@ -11,8 +11,6 @@ script = ExtResource("1_5f33o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1113971211]
 shape = SubResource("CircleShape2D_5f33o")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=616470378]
-
 [node name="Log" type="Sprite2D" parent="." unique_id=491714614]
 position = Vector2(0, -3)
-texture = ExtResource("1_vmjy8")
+texture = ExtResource("2_vcfxq")

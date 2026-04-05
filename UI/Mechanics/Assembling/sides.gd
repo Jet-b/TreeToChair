@@ -9,6 +9,8 @@ func _process(delta: float) -> void:
 		click_count = 0
 		emit_signal("buttons_pressed")
 	
+func _ready():
+	reset_buttons()
 
 func reset_buttons():
 	$Button.disabled = false

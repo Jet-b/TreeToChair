@@ -221,17 +221,18 @@ chairSprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=736056274]
 z_index = 1
-position = Vector2(916, 489)
+position = Vector2(251, 255)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_55bs3")
 autoplay = "default"
-frame = 19
 
 [node name="Side1" type="Control" parent="." unique_id=715656727]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -665.0
+offset_top = -234.0
+offset_right = -625.0
+offset_bottom = -194.0
 script = ExtResource("27_xagu4")
 
 [node name="Button" type="Button" parent="Side1" unique_id=1636556206]
@@ -277,8 +278,10 @@ offset_bottom = 509.0
 [node name="Side2" type="Control" parent="." unique_id=382275128]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -665.0
+offset_top = -234.0
+offset_right = -625.0
+offset_bottom = -194.0
 script = ExtResource("27_xagu4")
 
 [node name="Button" type="Button" parent="Side2" unique_id=1776158378]
@@ -324,8 +327,10 @@ offset_bottom = 490.0
 [node name="Side3" type="Control" parent="." unique_id=941206125]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -665.0
+offset_top = -234.0
+offset_right = -625.0
+offset_bottom = -194.0
 script = ExtResource("27_xagu4")
 
 [node name="Button" type="Button" parent="Side3" unique_id=917586014]
@@ -371,8 +376,10 @@ offset_bottom = 479.0
 [node name="Side4" type="Control" parent="." unique_id=297148081]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -665.0
+offset_top = -234.0
+offset_right = -625.0
+offset_bottom = -194.0
 script = ExtResource("27_xagu4")
 
 [node name="Button" type="Button" parent="Side4" unique_id=1348341703]
