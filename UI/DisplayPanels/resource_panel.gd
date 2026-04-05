@@ -1,11 +1,11 @@
 extends PanelContainer
 
-@onready var money_label = $VBoxContainer/MoneyLabel
-@onready var wood_label = $VBoxContainer/WoodLabel
-@onready var planks_label = $VBoxContainer/PlanksLabel
-@onready var metal_label = $VBoxContainer/MetalLabel
-@onready var nails_label = $VBoxContainer/NailsLabel
-@onready var chairs_label = $VBoxContainer/ChairsLabel
+@onready var money_label = $HBoxContainer/MoneyLabel
+@onready var wood_label = $HBoxContainer/WoodLabel
+@onready var planks_label = $HBoxContainer/PlanksLabel
+@onready var metal_label = $HBoxContainer/MetalLabel
+@onready var nails_label = $HBoxContainer/NailsLabel
+@onready var chairs_label = $HBoxContainer/ChairsLabel
 
 func _ready() -> void:
 	FundManager.resource_changed.connect(resource_changed)

@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @export var upgrade_panel : PackedScene
-@onready var vbox := $ScrollContainer/MarginContainer/VBoxContainer
+@onready var vbox := $ScrollContainer/MarginContainer/HBoxContainer
 
 func _ready() -> void:
 	for upgrade in FundManager.Upgrade:

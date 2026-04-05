@@ -3,20 +3,19 @@
 [node name="UpgradePanel" type="PanelContainer" unique_id=1757804984]
 custom_minimum_size = Vector2(200, 0)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1134060369]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1869299514]
 layout_mode = 2
-theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=250891135]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=250891135]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Chopped Huzz"
 
-[node name="Spacer" type="Control" parent="HBoxContainer" unique_id=850759958]
+[node name="PriceLabel" type="Label" parent="VBoxContainer" unique_id=543501419]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
+text = "Price: 0"
 
-[node name="Button" type="Button" parent="HBoxContainer" unique_id=147164365]
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=147164365]
 layout_mode = 2
-size_flags_horizontal = 8
 text = "BUY"

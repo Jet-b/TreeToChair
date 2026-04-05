@@ -1,94 +1,115 @@
-[gd_scene format=3 uid="uid://buxybgy3sjnmv"]
+[gd_scene format=3 uid="uid://dvjsfobfqmfnp"]
 
-[ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/DisplayPanels/Upgrades.tscn" id="1_2fwl4"]
-[ext_resource type="Script" uid="uid://btrjd1fbee52q" path="res://UI/ui.gd" id="1_e6gg6"]
-[ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="2_dajm1"]
-[ext_resource type="Texture2D" uid="uid://ce18yqgpgsqdq" path="res://Art/tree.png" id="2_nm1m0"]
-[ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="3_c7tqi"]
-[ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="4_hat8c"]
-[ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="5_3sbvi"]
-[ext_resource type="PackedScene" path="res://UI/DisplayPanels/MoneyCounter.tscn" id="6_mc"]
-[ext_resource type="PackedScene" uid="uid://f25rdk63o4bp" path="res://UI/Mechanics/Mining/MiningZone.tscn" id="8_4fiuh"]
-[ext_resource type="PackedScene" uid="uid://ch6kb7g866tm1" path="res://UI/Mechanics/Smithing/SmithingZone.tscn" id="8_h81ot"]
+[ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="1_dhe1o"]
+[ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="1_e707p"]
+[ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="1_q0uhn"]
+[ext_resource type="PackedScene" path="res://UI/DisplayPanels/MoneyCounter.tscn" id="2_q0uhn"]
+[ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="3_d050y"]
+[ext_resource type="PackedScene" uid="uid://f25rdk63o4bp" path="res://UI/Mechanics/Mining/MiningZone.tscn" id="4_qgmx8"]
+[ext_resource type="PackedScene" uid="uid://ch6kb7g866tm1" path="res://UI/Mechanics/Smithing/SmithingZone.tscn" id="5_vx7wu"]
+[ext_resource type="PackedScene" uid="uid://dq3ohxr5mg2f5" path="res://UI/Mechanics/Assembling/AssemblingZone.tscn" id="6_r2vy3"]
+[ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/DisplayPanels/Upgrades.tscn" id="7_qgmx8"]
+[ext_resource type="Script" uid="uid://bmcnjk2i3mjsk" path="res://UI/DisplayPanels/progression_manager.gd" id="10_vx7wu"]
 
-[sub_resource type="Gradient" id="Gradient_e6gg6"]
-offsets = PackedFloat32Array(0, 0.99759614)
-colors = PackedColorArray(0, 0, 0.8117647, 1, 0.48853427, 0.653095, 1, 1)
+[sub_resource type="Gradient" id="Gradient_e707p"]
+colors = PackedColorArray(0, 0, 1, 1, 0.74720484, 0.8318008, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_hat8c"]
-gradient = SubResource("Gradient_e6gg6")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f1fl4"]
+gradient = SubResource("Gradient_e707p")
 
-[node name="UI" type="Window" unique_id=573929793]
-oversampling_override = 1.0
-mode = 4
-title = "Farm to Table"
-size = Vector2i(1920, 1080)
-unresizable = true
-borderless = true
-script = ExtResource("1_e6gg6")
-
-[node name="TabContainer" type="TabContainer" parent="." unique_id=1631089989]
-z_index = 1
+[node name="Ui" type="Control" unique_id=571157097]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/tab_separation = 8
-theme_override_font_sizes/font_size = 20
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1889144350]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_f1fl4")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=247848689]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=324342824]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
 current_tab = 0
-clip_tabs = false
-drag_to_rearrange_enabled = true
-tab_0/title = "Main Tab"
-tab_0/icon = ExtResource("2_nm1m0")
-tab_1/title = "Stock Market"
-tab_2/title = "$0"
 
-[node name="MainTab" type="HBoxContainer" parent="TabContainer" unique_id=463197997]
+[node name="Main" type="MarginContainer" parent="TabContainer" unique_id=1869026037]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 metadata/_tab_index = 0
-metadata/_tab_name = "Main Tab"
 
-[node name="Upgrades" parent="TabContainer/MainTab" unique_id=640017076 instance=ExtResource("1_2fwl4")]
+[node name="Main" type="VBoxContainer" parent="TabContainer/Main" unique_id=1808981454]
 layout_mode = 2
 
-[node name="TreeZone" parent="TabContainer/MainTab" unique_id=2125933783 instance=ExtResource("2_dajm1")]
+[node name="ResourcePanel" parent="TabContainer/Main/Main" unique_id=834301793 instance=ExtResource("1_e707p")]
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 
-[node name="ResourcePanel" parent="TabContainer/MainTab" unique_id=834301793 instance=ExtResource("4_hat8c")]
+[node name="HBox" type="HBoxContainer" parent="TabContainer/Main/Main" unique_id=1406997758]
 layout_mode = 2
 
-[node name="SawZone" parent="TabContainer/MainTab" unique_id=2016291272 instance=ExtResource("5_3sbvi")]
+[node name="MarginContainer" parent="TabContainer/Main/Main/HBox" unique_id=2016291272 instance=ExtResource("1_q0uhn")]
 layout_mode = 2
 
-[node name="PanelContainer" parent="TabContainer/MainTab" unique_id=530760337 instance=ExtResource("8_4fiuh")]
+[node name="MarginContainer2" parent="TabContainer/Main/Main/HBox" unique_id=1133647628 instance=ExtResource("3_d050y")]
 layout_mode = 2
 
-[node name="SmithingZone" parent="TabContainer/MainTab" unique_id=455808818 instance=ExtResource("8_h81ot")]
+[node name="PanelContainer" parent="TabContainer/Main/Main/HBox" unique_id=530760337 instance=ExtResource("4_qgmx8")]
 layout_mode = 2
 
-[node name="StockMarket" parent="TabContainer" unique_id=262314408 instance=ExtResource("3_c7tqi")]
+[node name="SmithingZone" parent="TabContainer/Main/Main/HBox" unique_id=455808818 instance=ExtResource("5_vx7wu")]
+layout_mode = 2
+
+[node name="Control" parent="TabContainer/Main/Main/HBox" unique_id=45031767 instance=ExtResource("6_r2vy3")]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabContainer/Main/Main" unique_id=552915227]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" parent="TabContainer/Main/Main" unique_id=1257425739 instance=ExtResource("7_qgmx8")]
+layout_mode = 2
+
+[node name="Market" parent="TabContainer" unique_id=582036771 instance=ExtResource("1_dhe1o")]
 visible = false
 layout_mode = 2
-debug = true
 metadata/_tab_index = 1
-metadata/_tab_name = "Stock Market"
 
-[node name="MoneyCounter" parent="TabContainer" unique_id=1702555876 instance=ExtResource("6_mc")]
+[node name="Finances" parent="TabContainer" unique_id=1871539225 instance=ExtResource("2_q0uhn")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
-metadata/_tab_name = "$0"
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1252573028]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("GradientTexture1D_hat8c")
+[node name="ProgressionManager" type="Control" parent="." unique_id=435586383 node_paths=PackedStringArray("sawmill", "mining", "smithing", "assembling")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_vx7wu")
+sawmill = NodePath("../TabContainer/Main/Main/HBox/MarginContainer2")
+mining = NodePath("../TabContainer/Main/Main/HBox/PanelContainer")
+smithing = NodePath("../TabContainer/Main/Main/HBox/SmithingZone")
+assembling = NodePath("../TabContainer/Main/Main/HBox/Control")

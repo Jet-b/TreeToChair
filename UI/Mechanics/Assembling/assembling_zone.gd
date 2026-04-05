@@ -12,21 +12,25 @@ func _process(delta: float) -> void:
 		side_1()
 		currentSide = 1
 		chairSprite.pause()
+		$Side1.reset_buttons()
 		
 	if  chairSprite.frame == 6 and currentSide != 2:
 		side_2()
 		currentSide = 2
 		chairSprite.pause()
+		$Side2.reset_buttons()
 	
 	if  chairSprite.frame == 12 and currentSide != 3:
 		side_3()
 		currentSide = 3
 		chairSprite.pause()
+		$Side3.reset_buttons()
 		
 	if  chairSprite.frame == 19 and currentSide != 4:
 		side_4()
 		currentSide = 4
 		chairSprite.pause()
+		$Side4.reset_buttons()
 	
 func side_1():
 	$Side1.modulate.a = 255
