@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://autoseller"]
+[gd_scene format=3 uid="uid://utoseller"]
 
 [ext_resource type="Script" uid="uid://b8dgjtt4s80k0" path="res://UI/Mechanics/Sawmill/auto_seller.gd" id="1_asel"]
 

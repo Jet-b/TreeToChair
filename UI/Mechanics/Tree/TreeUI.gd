@@ -183,4 +183,3 @@ func _on_auto_chop_timeout(timer: Timer) -> void:
 			current_trees -= 1
 			_play_chop_sound()
 			return
-

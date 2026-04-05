@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dnr5m7tvfdmdl" path="res://UI/Mechanics/StockMarket/stock_market.gd" id="1_sm"]
 [ext_resource type="Script" uid="uid://wdhxdh2stmd5" path="res://UI/Mechanics/StockMarket/price_graph.gd" id="2_pg"]
 
-[node name="MarginContainer" type="MarginContainer" unique_id=582036771]
+[node name="MarginContainer2" type="MarginContainer" unique_id=582036771]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

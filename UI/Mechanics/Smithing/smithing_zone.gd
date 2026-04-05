@@ -73,4 +73,3 @@ func _process(delta: float) -> void:
 					$HBoxContainer/AnimatedSprite2D.frame = 0
 	else:
 		$HBoxContainer/AnimatedSprite2D.visible = false
-
