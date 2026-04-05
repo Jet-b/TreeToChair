@@ -54,7 +54,6 @@ func _ready() -> void:
 	add_child(_button_player)
 	_button_player.stream = _button_sound
 	_button_player.volume_db = -8.0
-	_button_player.bus = Settings.BUS_BUTTON
 	# Initialise upgrade definitions — name is the key
 	UPGRADES = {
 		# Progression: buy anything in a tier to reveal the next tier
@@ -179,6 +178,8 @@ func is_upgrade_visible(name: String) -> bool:
 		return false
 	var req: String = UPGRADES[name].requires
 	return req == "" or get_upgrade_count(req) > 0
+
+var _bg_music_started := false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

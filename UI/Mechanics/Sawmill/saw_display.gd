@@ -26,7 +26,6 @@ func _ready():
 	add_child(_saw_player)
 	_saw_player.stream = _saw_sound
 	_saw_player.volume_db = -5.0
-	_saw_player.bus = Settings.BUS_SAW
 	FundManager.resource_changed.connect(wood_update)
 	FundManager.upgrade_unlocked.connect(_on_upgrade_unlocked)
 	display_all_wood(FundManager.get_amount(FundManager.ResType.WOOD))

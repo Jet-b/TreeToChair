@@ -66,7 +66,6 @@ func _ready() -> void:
 	add_child(_money_player)
 	_money_player.stream = _money_sound
 	_money_player.volume_db = -5.0
-	_money_player.bus = Settings.BUS_MONEY
 	price_graph = %PriceGraph
 	own_label = %OwnLabel
 	buy_price_label = %BuyLabel

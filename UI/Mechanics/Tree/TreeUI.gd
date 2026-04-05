@@ -37,12 +37,10 @@ func _ready():
 	_chop_player = AudioStreamPlayer.new()
 	add_child(_chop_player)
 	_chop_player.volume_db = -5.0
-	_chop_player.bus = Settings.BUS_CHOP
 	_plant_player = AudioStreamPlayer.new()
 	add_child(_plant_player)
 	_plant_player.stream = _plant_sound
 	_plant_player.volume_db = -5.0
-	_plant_player.bus = Settings.BUS_PLANT
 	$TreeDelay.wait_time = tree_delay
 	$ChopDelay.wait_time = chop_delay
 	$PlantDelay.wait_time = plant_delay

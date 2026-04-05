@@ -8,30 +8,26 @@ func _ready() -> void:
 	slider.value = 1.0
 	_update_music_label(1.0)
 
+	var master_slider: HSlider = $VBoxContainer/MasterRow/MasterSlider
+	master_slider.min_value = 0.0
+	master_slider.max_value = 1.0
+	master_slider.step = 0.01
+	master_slider.value = 1.0
+	_update_master_label(1.0)
+
 func _update_music_label(value: float) -> void:
 	$VBoxContainer/MusicRow/MusicPct.text = "%d%%" % int(value * 100)
+
+func _update_master_label(value: float) -> void:
+	$VBoxContainer/MasterRow/MasterPct.text = "%d%%" % int(value * 100)
 
 func _on_music_slider_value_changed(value: float) -> void:
 	Settings.set_music_volume(value)
 	_update_music_label(value)
 
-func _on_btn_chk_toggled(pressed: bool) -> void:
-	Settings.set_bus_muted(Settings.BUS_BUTTON, not pressed)
-
-func _on_chop_chk_toggled(pressed: bool) -> void:
-	Settings.set_bus_muted(Settings.BUS_CHOP, not pressed)
-
-func _on_plant_chk_toggled(pressed: bool) -> void:
-	Settings.set_bus_muted(Settings.BUS_PLANT, not pressed)
-
-func _on_nail_chk_toggled(pressed: bool) -> void:
-	Settings.set_bus_muted(Settings.BUS_NAIL, not pressed)
-
-func _on_metal_chk_toggled(pressed: bool) -> void:
-	Settings.set_bus_muted(Settings.BUS_METAL, not pressed)
-
-func _on_saw_chk_toggled(pressed: bool) -> void:
-	Settings.set_bus_muted(Settings.BUS_SAW, not pressed)
-
-func _on_money_chk_toggled(pressed: bool) -> void:
-	Settings.set_bus_muted(Settings.BUS_MONEY, not pressed)
+func _on_master_slider_value_changed(value: float) -> void:
+	if value <= 0.001:
+		AudioServer.set_bus_volume_db(0, -80.0)
+	else:
+		AudioServer.set_bus_volume_db(0, linear_to_db(value))
+	_update_master_label(value)

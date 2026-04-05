@@ -1,14 +1,10 @@
 [gd_scene format=3 uid="uid://dvjsfobfqmfnp"]
 
-[ext_resource type="Texture2D" uid="uid://dvclrg3ely78y" path="res://Art/Wood-Icon.png" id="1_6q2ik"]
+[ext_resource type="Script" uid="uid://btrjd1fbee52q" path="res://UI/ui.gd" id="0_uigd"]
 [ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="1_dhe1o"]
 [ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="1_q0uhn"]
 [ext_resource type="PackedScene" uid="uid://moneyctr" path="res://UI/DisplayPanels/MoneyCounter/MoneyCounter.tscn" id="2_q0uhn"]
-[ext_resource type="Texture2D" uid="uid://6eoalcjb7aaf" path="res://Art/Plank-Icon.png" id="2_t31p1"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="3_d050y"]
-[ext_resource type="Texture2D" uid="uid://df7d2xykbdb0d" path="res://Art/Metal-Icon.png" id="3_kncd2"]
-[ext_resource type="Texture2D" uid="uid://boqdit41fomc6" path="res://Art/Chair/0001.png" id="3_ow1yt"]
-[ext_resource type="Texture2D" uid="uid://dqq5vd32bmebu" path="res://Art/Nail-Icon.png" id="4_1sm7k"]
 [ext_resource type="PackedScene" uid="uid://f25rdk63o4bp" path="res://UI/Mechanics/Mining/MiningZone.tscn" id="4_qgmx8"]
 [ext_resource type="PackedScene" uid="uid://ch6kb7g866tm1" path="res://UI/Mechanics/Smithing/SmithingZone.tscn" id="5_vx7wu"]
 [ext_resource type="PackedScene" uid="uid://dq3ohxr5mg2f5" path="res://UI/Mechanics/Assembling/AssemblingZone.tscn" id="6_r2vy3"]
@@ -25,6 +21,7 @@ colors = PackedColorArray(0.05, 0.08, 0.03, 1, 0.15, 0.28, 0.09, 1)
 gradient = SubResource("Gradient_e707p")
 
 [node name="Ui" type="Control" unique_id=571157097]
+script = ExtResource("0_uigd")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,11 +59,6 @@ theme_override_constants/tab_separation = 16
 theme_override_font_sizes/font_size = 32
 current_tab = 0
 drag_to_rearrange_enabled = true
-tab_4/icon = ExtResource("1_6q2ik")
-tab_5/icon = ExtResource("2_t31p1")
-tab_6/icon = ExtResource("3_kncd2")
-tab_7/icon = ExtResource("4_1sm7k")
-tab_8/icon = ExtResource("3_ow1yt")
 
 [node name="Main" type="MarginContainer" parent="TabContainer" unique_id=1869026037]
 layout_mode = 2
@@ -85,72 +77,72 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="TreeWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=3300000001]
+[node name="TreeWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=-994967295]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="TreeTitle" type="Label" parent="TabContainer/Main/Main/HBox/TreeWrap" unique_id=3300000002]
+[node name="TreeTitle" type="Label" parent="TabContainer/Main/Main/HBox/TreeWrap" unique_id=-994967294]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Forest"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 18
 
 [node name="MarginContainer" parent="TabContainer/Main/Main/HBox/TreeWrap" unique_id=2016291272 instance=ExtResource("1_q0uhn")]
 layout_mode = 2
 
-[node name="SawWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=3300000003]
+[node name="SawWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=-994967293]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="SawTitle" type="Label" parent="TabContainer/Main/Main/HBox/SawWrap" unique_id=3300000004]
+[node name="SawTitle" type="Label" parent="TabContainer/Main/Main/HBox/SawWrap" unique_id=-994967292]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Sawmill"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 18
 
 [node name="MarginContainer2" parent="TabContainer/Main/Main/HBox/SawWrap" unique_id=1133647628 instance=ExtResource("3_d050y")]
 layout_mode = 2
 
-[node name="MineWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=3300000005]
+[node name="MineWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=-994967291]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="MineTitle" type="Label" parent="TabContainer/Main/Main/HBox/MineWrap" unique_id=3300000006]
+[node name="MineTitle" type="Label" parent="TabContainer/Main/Main/HBox/MineWrap" unique_id=-994967290]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Mine"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 18
 
 [node name="PanelContainer" parent="TabContainer/Main/Main/HBox/MineWrap" unique_id=530760337 instance=ExtResource("4_qgmx8")]
 layout_mode = 2
 
-[node name="SmithWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=3300000007]
+[node name="SmithWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=-994967289]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="SmithTitle" type="Label" parent="TabContainer/Main/Main/HBox/SmithWrap" unique_id=3300000008]
+[node name="SmithTitle" type="Label" parent="TabContainer/Main/Main/HBox/SmithWrap" unique_id=-994967288]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Smithy"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 18
 
 [node name="SmithingZone" parent="TabContainer/Main/Main/HBox/SmithWrap" unique_id=455808818 instance=ExtResource("5_vx7wu")]
 layout_mode = 2
 
-[node name="AssembleWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=3300000009]
+[node name="AssembleWrap" type="VBoxContainer" parent="TabContainer/Main/Main/HBox" unique_id=-994967287]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="AssembleTitle" type="Label" parent="TabContainer/Main/Main/HBox/AssembleWrap" unique_id=3300000010]
+[node name="AssembleTitle" type="Label" parent="TabContainer/Main/Main/HBox/AssembleWrap" unique_id=-994967286]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Workshop"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 18
 
 [node name="Control" parent="TabContainer/Main/Main/HBox/AssembleWrap" unique_id=45031767 instance=ExtResource("6_r2vy3")]
 layout_mode = 2
@@ -200,7 +192,7 @@ tracked_resource = 5
 metadata/_tab_index = 8
 
 [node name="Settings" parent="TabContainer" unique_id=2100000006 instance=ExtResource("12_stab")]
-layout_mode = 2
+visible = false
 metadata/_tab_index = 9
 
 [node name="ProgressionManager" type="Control" parent="." unique_id=435586383 node_paths=PackedStringArray("sawmill", "mining", "smithing", "assembling")]
@@ -216,7 +208,5 @@ assembling = NodePath("../TabContainer/Main/Main/HBox/AssembleWrap/Control")
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1395684520]
 stream = ExtResource("11_bgmus")
 volume_db = -20.0
-autoplay = true
-bus = &"Music"
 
 [connection signal="finished" from="BackgroundMusic" to="BackgroundMusic" method="play"]

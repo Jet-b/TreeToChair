@@ -20,7 +20,6 @@ func _ready() -> void:
 	add_child(_metal_player)
 	_metal_player.stream = _metal_sound
 	_metal_player.volume_db = -5.0
-	_metal_player.bus = Settings.BUS_METAL
 	FundManager.upgrade_unlocked.connect(_on_upgrade_unlocked)
 	# Apply already-purchased upgrades on load
 	_yield_bonus = FundManager.get_upgrade_count("MINING_YIELD")
