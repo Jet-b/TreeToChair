@@ -8,7 +8,16 @@ var _nails_per_smelt: int = 1    # BULK_SMITH doubles this
 var _auto_smiths: Array = []
 var _smith_delay: float = 3.0
 
+var _nail_sound := preload("res://Sound/Nails/nail.mp3")
+var _nail_player: AudioStreamPlayer
+
+func _play_nail_sound() -> void:
+	_nail_player.play()
+
 func _ready() -> void:
+	_nail_player = AudioStreamPlayer.new()
+	add_child(_nail_player)
+	_nail_player.stream = _nail_sound
 	$HBoxContainer/VSlider.scale.y = -1
 	FundManager.upgrade_unlocked.connect(_on_upgrade_unlocked)
 	# Apply already-purchased upgrades on load
@@ -40,6 +49,7 @@ func _auto_smelt() -> void:
 	if FundManager.has_amount(FundManager.ResType.METAL, 1):
 		FundManager.take(FundManager.ResType.METAL, 1)
 		FundManager.give(FundManager.ResType.NAILS, _nails_per_smelt)
+		_play_nail_sound()
 
 func _process(delta: float) -> void:
 	if FundManager.get_amount(FundManager.ResType.METAL) > 0:
@@ -59,6 +69,7 @@ func _process(delta: float) -> void:
 				if $HBoxContainer/AnimatedSprite2D.frame >= 3:
 					FundManager.give(FundManager.ResType.NAILS, _nails_per_smelt)
 					FundManager.take(FundManager.ResType.METAL, 1)
+					_play_nail_sound()
 					$HBoxContainer/AnimatedSprite2D.frame = 0
 	else:
 		$HBoxContainer/AnimatedSprite2D.visible = false

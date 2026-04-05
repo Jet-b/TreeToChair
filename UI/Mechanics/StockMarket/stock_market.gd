@@ -57,8 +57,14 @@ const HOLD_START_INTERVAL := 0.4
 const HOLD_MIN_INTERVAL := 0.02
 const HOLD_RAMP_SPEED := 0.85
 
+var _money_sound := preload("res://Sound/UI/Money.mp3")
+var _money_player: AudioStreamPlayer
+
 func _ready() -> void:
 	add_to_group("stock_market_node")
+	_money_player = AudioStreamPlayer.new()
+	add_child(_money_player)
+	_money_player.stream = _money_sound
 	price_graph = %PriceGraph
 	own_label = %OwnLabel
 	buy_price_label = %BuyLabel
@@ -210,6 +216,8 @@ func on_buy_pressed() -> void:
 			MAX_PRESSURE
 		)
 		_recalculate_price(selected_resource)
+		_money_player.stop()
+		_money_player.play()
 	update_ui()
 
 func on_sell_pressed() -> void:
@@ -221,6 +229,8 @@ func on_sell_pressed() -> void:
 		FundManager.give_money(snappedf(current_prices[selected_resource] * actual, 0.01))
 		demand_pressure[selected_resource] -= PRESSURE_PER_SELL * actual
 		_recalculate_price(selected_resource)
+		_money_player.stop()
+		_money_player.play()
 	update_ui()
 
 func on_resource_changed(type, amount) -> void:

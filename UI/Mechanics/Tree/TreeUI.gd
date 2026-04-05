@@ -16,8 +16,29 @@ var current_trees := 0
 var _auto_choppers: Array = []
 var _auto_planters: Array = []
 
+var _chop_sounds: Array = [
+	preload("res://Sound/Wood/woodChop1.mp3"),
+	preload("res://Sound/Wood/woodChop2.mp3"),
+	preload("res://Sound/Wood/woodChop3.mp3"),
+	preload("res://Sound/Wood/woodChop4.mp3"),
+]
+var _chop_player: AudioStreamPlayer
+
+var _plant_sound := preload("res://Sound/Tree/TreeGrow.mp3")
+var _plant_player: AudioStreamPlayer
+
+
+func _play_chop_sound() -> void:
+	_chop_player.stream = _chop_sounds[randi() % _chop_sounds.size()]
+	_chop_player.play()
+
 
 func _ready():
+	_chop_player = AudioStreamPlayer.new()
+	add_child(_chop_player)
+	_plant_player = AudioStreamPlayer.new()
+	add_child(_plant_player)
+	_plant_player.stream = _plant_sound
 	$TreeDelay.wait_time = tree_delay
 	$ChopDelay.wait_time = chop_delay
 	$PlantDelay.wait_time = plant_delay
@@ -111,6 +132,7 @@ func _on_upgrade_unlocked(name: String) -> void:
 func _plant_tree() -> void:
 	if current_trees >= max_trees:
 		return
+	_plant_player.play()
 	var new_tree = Sprite2D.new()
 	new_tree.texture = tree
 	add_child(new_tree)
@@ -150,6 +172,7 @@ func _on_chop_delay_timeout() -> void:
 			child.queue_free()
 			FundManager.give(FundManager.ResType.WOOD, 2)
 			current_trees -= 1
+			_play_chop_sound()
 			return
 
 func _on_auto_chop_timeout(timer: Timer) -> void:
@@ -158,5 +181,6 @@ func _on_auto_chop_timeout(timer: Timer) -> void:
 			child.queue_free()
 			FundManager.give(FundManager.ResType.WOOD, 2)
 			current_trees -= 1
+			_play_chop_sound()
 			return
 

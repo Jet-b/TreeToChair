@@ -40,11 +40,19 @@ var UPGRADES: Dictionary = {}
 
 # --- State ---
 
+var debug: bool = true  # Set true to make all upgrades free
+
 var _resources: Dictionary = {}
 var _upgrades: Dictionary = {}
 var _money: float = 0.0
 
+var _button_sound := preload("res://Sound/UI/buttonPress.mp3")
+var _button_player: AudioStreamPlayer
+
 func _ready() -> void:
+	_button_player = AudioStreamPlayer.new()
+	add_child(_button_player)
+	_button_player.stream = _button_sound
 	# Initialise upgrade definitions — name is the key
 	UPGRADES = {
 		# Progression: buy anything in a tier to reveal the next tier
@@ -156,6 +164,8 @@ func get_upgrade_count(name: String) -> int:
 
 # Returns the cost of the next purchase of this upgrade
 func get_next_price(name: String) -> int:
+	if debug:
+		return 0
 	if not UPGRADES.has(name):
 		return 0
 	var def: UpgradeDef = UPGRADES[name]
@@ -167,6 +177,11 @@ func is_upgrade_visible(name: String) -> bool:
 		return false
 	var req: String = UPGRADES[name].requires
 	return req == "" or get_upgrade_count(req) > 0
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_button_player.stop()
+		_button_player.play()
 
 func unlock_upgrade(name: String) -> bool:
 	if not UPGRADES.has(name):

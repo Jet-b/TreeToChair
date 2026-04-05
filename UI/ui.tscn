@@ -147,3 +147,8 @@ sawmill = NodePath("../TabContainer/Main/Main/HBox/MarginContainer2")
 mining = NodePath("../TabContainer/Main/Main/HBox/PanelContainer")
 smithing = NodePath("../TabContainer/Main/Main/HBox/SmithingZone")
 assembling = NodePath("../TabContainer/Main/Main/HBox/Control")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1395684520]
+autoplay = true
+
+[connection signal="finished" from="BackgroundMusic" to="BackgroundMusic" method="play"]
