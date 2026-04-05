@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://f25rdk63o4bp"]
 
-[ext_resource type="Texture2D" uid="uid://dddluqsrv3atc" path="res://Art/Ore.png" id="1_0u4fh"]
+[ext_resource type="Texture2D" uid="uid://dddluqsrv3atc" path="res://Art/Resources/Ore.png" id="1_0u4fh"]
 [ext_resource type="Script" uid="uid://dw86pgx38lqc2" path="res://UI/Mechanics/Mining/mining_zone.gd" id="1_kcq4r"]
 
 [node name="PanelContainer" type="PanelContainer" unique_id=530760337]

@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://dvjsfobfqmfnp"]
 
 [ext_resource type="PackedScene" uid="uid://bypbm0h070mmp" path="res://UI/Mechanics/StockMarket/StockMarketWindow.tscn" id="1_dhe1o"]
-[ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel.tscn" id="1_e707p"]
+[ext_resource type="PackedScene" uid="uid://b3ye8xibd6wxe" path="res://UI/DisplayPanels/ResourcePanel/ResourcePanel.tscn" id="1_e707p"]
 [ext_resource type="PackedScene" uid="uid://1vdsqtvlx5et" path="res://UI/Mechanics/Tree/TreeZone.tscn" id="1_q0uhn"]
-[ext_resource type="PackedScene" path="res://UI/DisplayPanels/MoneyCounter.tscn" id="2_q0uhn"]
+[ext_resource type="PackedScene" uid="uid://moneyctr" path="res://UI/DisplayPanels/MoneyCounter/MoneyCounter.tscn" id="2_q0uhn"]
 [ext_resource type="PackedScene" uid="uid://cffsfqo0o3nyx" path="res://UI/Mechanics/Sawmill/SawZone.tscn" id="3_d050y"]
 [ext_resource type="PackedScene" uid="uid://f25rdk63o4bp" path="res://UI/Mechanics/Mining/MiningZone.tscn" id="4_qgmx8"]
 [ext_resource type="PackedScene" uid="uid://ch6kb7g866tm1" path="res://UI/Mechanics/Smithing/SmithingZone.tscn" id="5_vx7wu"]
 [ext_resource type="PackedScene" uid="uid://dq3ohxr5mg2f5" path="res://UI/Mechanics/Assembling/AssemblingZone.tscn" id="6_r2vy3"]
-[ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/DisplayPanels/Upgrades.tscn" id="7_qgmx8"]
-[ext_resource type="Script" uid="uid://bmcnjk2i3mjsk" path="res://UI/DisplayPanels/progression_manager.gd" id="10_vx7wu"]
+[ext_resource type="PackedScene" uid="uid://db2of7ywbnhis" path="res://UI/DisplayPanels/Upgrades/Upgrades.tscn" id="7_qgmx8"]
+[ext_resource type="Script" uid="uid://bmcnjk2i3mjsk" path="res://UI/DisplayPanels/ProgressionManager/progression_manager.gd" id="10_vx7wu"]
 
 [sub_resource type="Gradient" id="Gradient_e707p"]
 colors = PackedColorArray(0, 0, 1, 1, 0.74720484, 0.8318008, 1, 1)

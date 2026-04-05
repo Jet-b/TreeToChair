@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cffsfqo0o3nyx"]
 
 [ext_resource type="Script" uid="uid://dwf8rq0drpvqu" path="res://UI/Mechanics/Sawmill/saw_display.gd" id="1_srd1y"]
-[ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/log.png" id="2_3wemg"]
+[ext_resource type="Texture2D" uid="uid://baoj0v5efl7wf" path="res://Art/Resources/log.png" id="2_3wemg"]
 [ext_resource type="PackedScene" uid="uid://bcgfapk3ttm3s" path="res://UI/Mechanics/Sawmill/Log.tscn" id="3_6xj0q"]
-[ext_resource type="Texture2D" uid="uid://rgsi0ee27rv8" path="res://Art/Wood Shredder.png" id="4_wg6hk"]
+[ext_resource type="Texture2D" uid="uid://rgsi0ee27rv8" path="res://Art/UI/Wood Shredder.png" id="4_wg6hk"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=2016291272]
 offset_right = 300.0
